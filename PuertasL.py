@@ -24,7 +24,7 @@ import sys
 
 SCREEN_WIDTH = 700
 SCREEN_HEIGHT = 500
-IMG_DIR = "imagenes"
+IMG_DIR = "FOTOS"
 
 # ******************************
 # Clases y Funciones utilizadas
@@ -52,22 +52,11 @@ def load_image(nombre, dir_imagen, alpha=False):
 
 # Todas las puertas logicas heredan de la clase Pieza
 
-
-
-
-
-
-
-
-
-
-
-
 def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption("Juego puertas logicas")
-    fondo = load_image("fondo.jpg", IMG_DIR, alpha=False)
+    fondo = load_image("OR.png", IMG_DIR, alpha=False)
 
 if __name__ == "__main__":
     main()
