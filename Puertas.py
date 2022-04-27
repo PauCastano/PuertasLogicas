@@ -21,8 +21,8 @@ import sys
 # Constantes
 # ***********
 
-SCREEN_WIDTH = 640
-SCREEN_HEIGHT = 480
+SCREEN_WIDTH = 700
+SCREEN_HEIGHT = 500
 IMG_DIR = "imagenes"
 
 # ******************************
@@ -139,5 +139,11 @@ class XNOR(Pieza):
             salida = 0
         return salida
 
-
 def main():
+    pygame.init()
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    pygame.display.set_caption("Juego puertas logicas")
+    fondo = load_image("fondo.jpg", IMG_DIR, alpha=False)
+
+if __name__ == "__main__":
+    main()
