@@ -12,7 +12,7 @@
 # ***************************
 # Importacion de los modulos
 # ***************************
-
+from OR import *
 import pygame
 from pygame.locals import *
 import os
@@ -22,8 +22,8 @@ import sys
 # Constantes
 # ***********
 
-SCREEN_WIDTH = 700
-SCREEN_HEIGHT = 500
+SCREEN_WIDTH = 480
+SCREEN_HEIGHT = 640
 IMG_DIR = "FOTOS"
 
 # ******************************
@@ -31,8 +31,8 @@ IMG_DIR = "FOTOS"
 # ******************************
 
 
-def load_image(nombre, dir_imagen, alpha=False):
-    ruta = os.path.join(dir_imagen, nombre)
+def load_image(nombre, IMG_DIR, alpha=False):
+    ruta = os.path.join(IMG_DIR, nombre)
     try:
         image = pygame.image.load(ruta)
     except:
@@ -54,23 +54,25 @@ def load_image(nombre, dir_imagen, alpha=False):
 
 def main():
     pygame.init()
+    # creamos la ventana y le indicamos un titulo:
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    pygame.display.set_caption("Juego puertas logicas")
-    #fondo = load_image("OR.png", IMG_DIR, alpha=False)
+    pygame.display.set_caption("tutorial pygame parte 2")
 
     # cargamos el fondo y una imagen (se crea objetos "Surface")
-    fondo = pygame.image.load("OR.png").convert()
-    tux = pygame.image.load("AND.png").convert_alpha()
+    fondo = load_image("FONDO.jpg", IMG_DIR, alpha=False)
+    # Ajustem l'escala del fons
+    fondo = pygame.transform.scale(fondo,(640, 480))
+    # Girem el fons 90º
+    fondo = pygame.transform.rotate(fondo, 90)
+    tux = load_image("OR.png", IMG_DIR, alpha=True)
 
-    # Indicamos la posicion de las "Surface" sobre la ventana
     screen.blit(fondo, (0, 0))
-    screen.blit(tux, (550, 200))
+    screen.blit(tux, (300, 300))
     # se muestran lo cambios en pantalla
     pygame.display.flip()
 
     # el bucle principal del juego
     while True:
-        # Posibles entradas del teclado y mouse
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()

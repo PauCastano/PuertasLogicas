@@ -8,3 +8,6 @@ class Pieza:
 
     def mov(self):
         self.speed = [4, 4]
+
+if __name__ == "__main__":
+    main()
