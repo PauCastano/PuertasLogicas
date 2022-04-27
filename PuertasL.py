@@ -12,7 +12,10 @@
 # ***************************
 # Importacion de los modulos
 # ***************************
-from OR import *
+from Pieza import *
+
+
+
 import pygame
 from pygame.locals import *
 import os
@@ -64,7 +67,7 @@ def main():
     fondo = pygame.transform.scale(fondo,(640, 480))
     # Girem el fons 90º
     fondo = pygame.transform.rotate(fondo, 90)
-    tux = load_image("OR.png", IMG_DIR, alpha=True)
+
 
     screen.blit(fondo, (0, 0))
     screen.blit(tux, (300, 300))
