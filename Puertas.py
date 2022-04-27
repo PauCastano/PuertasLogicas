@@ -4,6 +4,7 @@
 # Nombres:
 #           Ariadna Delriu Carulla
 #           Pau Castaño i Ferré
+#           Guillem Rovira Herrero
 # ***********************************************************
 
 
