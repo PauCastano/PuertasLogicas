@@ -1,3 +1,4 @@
+from PuertasL import *
 class Pieza:
     # Definicion del comportamiento de las piezas en general
     def __init__(self, entrada1 = 0, entrada2 = 0):
