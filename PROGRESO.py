@@ -1,9 +1,12 @@
 from NIVEL import *
+from Nivel_actual import *
 class PROGRESO:
     # Guardamos el progreso de los niveles
-    progreso = 0
-    def comp(self):
+    def __init__(self, progreso):
+        self.progreso = progreso
+
+    #Función que indica que el progreso es un número entero y que depende del nivel actual
+    def progress(self):
         # Comportamineto de la Puerta logica
-        if snivel == 1:
-            progreso = progreso +1
+        progreso = self.nivel_actual - 1
         return progreso
