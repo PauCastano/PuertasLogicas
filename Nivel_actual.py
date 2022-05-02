@@ -2,7 +2,7 @@ from NIVEL import *
 class Nivel_actual:
 
     # Iniciamos el primer nivel
-    def __init__(self, nivel_actual = 0):
+    def __init__(self, nivel_actual = 1):
         self.nivel_actual = nivel_actual
 
     #Función para indicar cual es el nivel actual según la salida del nivel
