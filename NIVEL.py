@@ -4,7 +4,7 @@ class NIVEL:
         self.salida = salida
     #si la salida es 1 quiere decir que el nivel esta superado
     def comp (self):
-        if salida == 1:
+        if self.salida == 1:
             snivel = 1
         else:
             snivel = 0
