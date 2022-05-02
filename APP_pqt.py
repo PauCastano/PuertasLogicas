@@ -17,11 +17,14 @@ class MyWindowClass(QMainWindow, form_class):
         self.setupUi(self)
         self.pantallas.setCurrentIndex(0)  # Activamos la pantalla 1
 
-    def activap0(self):
+    def activa_menu(self):
         self.pantallas.setCurrentIndex(0) # cambiamos a la pantalla 2
 
-    def activap1(self):
+    def activa_pantalla_niveles(self):
         self.pantallas.setCurrentIndex(1) # cambiamos a la pantalla 1
+
+    def activa_pantalla_tutoriales(self):
+        self.pantallas.setCurrentIndex(2) # cambiamos a la pantalla 1
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
