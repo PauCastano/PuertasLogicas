@@ -156,6 +156,9 @@
          </item>
          <item row="1" column="0">
           <widget class="QPushButton" name="pushButton_8">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(170, 255, 127);</string>
+           </property>
            <property name="text">
             <string>1</string>
            </property>
@@ -325,7 +328,7 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="venv/Scripts/recursos.qrc"/>
+  <include location="recursos.qrc"/>
  </resources>
  <connections>
   <connection>
