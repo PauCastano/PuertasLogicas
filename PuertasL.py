@@ -46,7 +46,7 @@ def load_image(nombre, IMG_DIR, alpha=False):
         image = image.convert()
     return image
 
-
+https://programmerclick.com/article/70961779601/
 
 
 
@@ -77,10 +77,10 @@ def main():
     posX=200
     posY = 100
     velocidad = 2
-    Blanco(255, 255, 255)
+    Blanco=(255, 255, 255)
     derecha = True
     rectangulo = pygame.Rect(0,0,100,150)
-    rectangulo_dos= pygame.Rect(300, 300, 100, 150)
+    rectangulo_dos = pygame.Rect(300, 300, 100, 150)
     # el bucle principal del juego
     while True:
 
