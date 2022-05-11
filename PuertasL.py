@@ -76,20 +76,28 @@ def main():
     running = True
     moving = False
 
+    portes = [rect, rect2]
     while running:
         for event in pygame.event.get():
             if event.type == QUIT:
                 running = False
+
             elif event.type == MOUSEBUTTONDOWN:
-                if rect.collidepoint(event.pos):
-                    moving = True
+                for r in portes:
+                    if r.collidepoint(event.pos):
+                        moving = True
+
+            elif event.type == MOUSEMOTION and moving:
+                for r in portes:
+                    if r.collidepoint(event.pos):
+                        r.move_ip(event.rel)
+
             elif event.type == MOUSEBUTTONUP:
                 moving = False
-            elif event.type == MOUSEMOTION  and moving:
-                rect.move_ip(event.rel)
 
         screen.fill(YELLOW)
         screen.blit(image, rect)
+        screen.blit(image2, rect2)
 
         pygame.display.update()
 
