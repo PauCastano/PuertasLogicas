@@ -49,7 +49,8 @@ def load_image(nombre, IMG_DIR, alpha=False):
 
 
 
-YELLOW = (255, 255, 0)
+Amarillo = (255, 255, 0)
+Blanco = (255, 255, 255)
 
 
 # Todas las puertas logicas heredan de la clase Pieza
@@ -61,7 +62,7 @@ def main():
     # creamos la ventana y le indicamos un titulo:
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-    image = pygame.image.load('FOTOS/BE.png')
+    image = pygame.image.load('FOTOS/AND.png')
     image.convert()
 
     rect = image.get_rect()
@@ -70,8 +71,14 @@ def main():
     image2 = pygame.image.load('FOTOS/BE.png')
     image2.convert()
 
-    rect2 = image.get_rect()
+    rect2 = image2.get_rect()
     rect2.center = SCREEN_WIDTH // 4, SCREEN_WIDTH // 4
+
+    object = pygame.Rect((SCREEN_WIDTH // 4, SCREEN_WIDTH // 4), (200, 200))
+
+
+
+    collide = pygame.Rect.colliderect(rect,rect2)
 
     running = True
     moving = False
@@ -87,17 +94,28 @@ def main():
                     if r.collidepoint(event.pos):
                         moving = True
 
+
             elif event.type == MOUSEMOTION and moving:
                 for r in portes:
                     if r.collidepoint(event.pos):
                         r.move_ip(event.rel)
+                if collide:
+                    rect2.top = object.top
+                    rect2.left = object.left
 
             elif event.type == MOUSEBUTTONUP:
                 moving = False
 
-        screen.fill(YELLOW)
+
+
+
+
+        # L'ordre de les en que fem les figures importa en quines estan en primera fila
+        screen.fill(Amarillo)
+        pygame.draw.rect(screen, Blanco, object)
         screen.blit(image, rect)
         screen.blit(image2, rect2)
+
 
         pygame.display.update()
 
