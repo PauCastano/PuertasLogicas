@@ -23,8 +23,8 @@ import sys
 # Constantes
 # ***********
 
-SCREEN_WIDTH = 480
-SCREEN_HEIGHT = 640
+SCREEN_WIDTH = 640
+SCREEN_HEIGHT = 480
 IMG_DIR = "FOTOS"
 
 # ******************************
@@ -72,13 +72,12 @@ def main():
     image2.convert()
 
     rect2 = image2.get_rect()
-    rect2.center = SCREEN_WIDTH // 4, SCREEN_WIDTH // 4
+    rect2.center = 500, 200
 
     object = pygame.Rect((SCREEN_WIDTH // 4, SCREEN_WIDTH // 4), (200, 200))
 
 
-
-    collide = pygame.Rect.colliderect(rect,rect2)
+   # collide = pygame.Rect.colliderect(object,rect2)
 
     running = True
     moving = False
@@ -94,20 +93,18 @@ def main():
                     if r.collidepoint(event.pos):
                         moving = True
 
-
             elif event.type == MOUSEMOTION and moving:
                 for r in portes:
                     if r.collidepoint(event.pos):
                         r.move_ip(event.rel)
-                if collide:
+
+                if object.top == rect2.top:
                     rect2.top = object.top
                     rect2.left = object.left
 
+
             elif event.type == MOUSEBUTTONUP:
                 moving = False
-
-
-
 
 
         # L'ordre de les en que fem les figures importa en quines estan en primera fila
