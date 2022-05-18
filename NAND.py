@@ -12,8 +12,8 @@ class NAND(Pieza):
         else:
             self.salida = 1
 
-if __name__ == '__main__':
-    n = NAND()
+if __name__ == '__main__': #COMPROVAR QUE FUNCIONA BIEN
+    n = NAND(0,0)
     n.comp()
     print(n.entrada1)
     print(n.entrada2)
