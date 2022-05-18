@@ -10,6 +10,6 @@ class Hueco:
 
 if __name__ == '__main__':
     n = Hueco()
-    print(Hueco().a)
+    print(n.a)
     print(n.b)
     print(n.salida)

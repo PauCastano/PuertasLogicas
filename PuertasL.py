@@ -17,6 +17,12 @@ import pygame
 from pygame.locals import *
 import os
 import sys
+from AND import *
+from NAND import *
+from NOR import *
+from OR import *
+from XNOR import *
+from XOR import *
 
 # ***********
 # Constantes
@@ -56,18 +62,19 @@ def main():
 
     # creamos la ventana y le indicamos un titulo:
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    fondo = pygame.image.load('FOTOS/FONDO.jpg')
 
-    image = pygame.image.load('FOTOS/AND.png')
+    image = NOR().image
     image.convert()
 
     rect = image.get_rect()
     rect.center= SCREEN_WIDTH//2, SCREEN_WIDTH//2
 
-    image2 = pygame.image.load('FOTOS/BE.png')
+    image2 = AND().image
     image2.convert()
 
     rect2 = image2.get_rect()
-    rect2.center = 500, 200
+    rect2.center = 400, 200
 
     object = pygame.Rect((SCREEN_WIDTH // 4, SCREEN_WIDTH // 4), (200, 200))
 
@@ -100,9 +107,9 @@ def main():
                 moving = False
 
 
-        # L'ordre de les en que fem les figures importa en quines estan en primera fila
-        screen.fill(Amarillo)
-        pygame.draw.rect(screen, Blanco, object)
+        # L'ordre en que fem les figures importa en quines estan en primera fila
+        screen.blit(fondo,(0,0))
+        pygame.draw.rect(screen, Amarillo, object)
         screen.blit(image, rect)
         screen.blit(image2, rect2)
 

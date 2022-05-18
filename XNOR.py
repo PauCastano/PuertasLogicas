@@ -1,9 +1,14 @@
 from Pieza import *
+import pygame
+from pygame.locals import *
+
 
 class XNOR(Pieza):
+    pygame.init()
+
     def __init__(self, entrada1=0, entrada2=0):
         super().__init__(entrada1, entrada2)
-        #self.image = load_image("XNOR.png", IMG_DIR, alpha=True)
+        self.image = pygame.image.load('FOTOS/XNOR.png')
 
     def comp(self):
         # Comportamineto de la Puerta logica

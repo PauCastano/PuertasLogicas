@@ -1,10 +1,14 @@
 from Pieza import *
+import pygame
+from pygame.locals import *
+
 
 class OR(Pieza):
+    pygame.init()
 
     def __init__(self, entrada1=0, entrada2=0):
         super().__init__(entrada1, entrada2)
-        #self.image = load_image("OR.png", IMG_DIR, alpha=True)
+        self.image = pygame.image.load('FOTOS/OR.png')
 
     def comp(self):
         # Comportamineto de la Puerta logica
