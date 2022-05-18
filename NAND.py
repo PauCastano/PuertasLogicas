@@ -7,10 +7,7 @@ class NAND(Pieza):
 
     def comp(self):
         # Comportamineto de la Puerta logica
-        if self.entrada1 == 1 and self.entrada2 == 1:
-            self.salida = 0
-        else:
-            self.salida = 1
+        self.salida = int( not (self.entrada1 and self.entrada2))
 
 if __name__ == '__main__': #COMPROVAR QUE FUNCIONA BIEN
     n = NAND(0,0)

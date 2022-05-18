@@ -7,10 +7,7 @@ class XNOR(Pieza):
 
     def comp(self):
         # Comportamineto de la Puerta logica
-        if self.entrada1 == self.entrada2:
-            self.salida = 1
-        else:
-            self.salida = 0
+        self.salida = int(not (self.entrada1 ^ self.entrada2))
 
 
 if __name__ == '__main__':

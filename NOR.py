@@ -7,11 +7,7 @@ class NOR(Pieza):
 
     def comp(self):
         # Comportamineto de la Puerta logica
-        if (self.entrada1 == 0) and (self.entrada2 == 0):
-            self.salida = 1
-        else:
-            self.salida = 0
-
+        self.salida = int(not (self.entrada1 or self.entrada2))
 if __name__ == '__main__':
     n = NOR()
     n.comp()
