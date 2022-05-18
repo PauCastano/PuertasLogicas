@@ -1,8 +1,8 @@
 from Pieza import *
 
 class XOR(Pieza):
-    def __init__(self):
-        super(XOR, self).__init__()
+    def __init__(self, entrada1=0, entrada2=0):
+        super().__init__(entrada1, entrada2)
         #self.image = load_image("XOR.png", IMG_DIR, alpha=True)
 
     def comp(self):

@@ -2,7 +2,7 @@ from Pieza import *
 
 class OR(Pieza):
 
-    def __init__(self, entrada1, entrada2):
+    def __init__(self, entrada1=0, entrada2=0):
         super().__init__(entrada1, entrada2)
         #self.image = load_image("OR.png", IMG_DIR, alpha=True)
 
