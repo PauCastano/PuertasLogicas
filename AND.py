@@ -8,10 +8,7 @@ class AND(Pieza):
 
     def comp(self):
         # Comportamineto de la Puerta logica
-        if self.entrada1 == 1 and self.entrada2 == 1:
-            self.salida = 1
-        else:
-            self.salida = 0
+        self.salida = self.entrada1 and self.entrada2
 if __name__ == '__main__':
     n = AND()
     n.comp()

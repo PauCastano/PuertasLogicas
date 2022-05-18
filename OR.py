@@ -8,12 +8,7 @@ class OR(Pieza):
 
     def comp(self):
         # Comportamineto de la Puerta logica
-        if self.entrada1 == 1:
-            self.salida = 1
-        elif self.entrada2 == 1:
-           self.salida = 1
-        else:
-            self.salida = 0
+        self.salida = self.entrada1 or self.entrada2
 
 if __name__ == '__main__':
     n = OR()
