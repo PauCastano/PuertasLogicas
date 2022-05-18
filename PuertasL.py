@@ -12,7 +12,7 @@
 # ***************************
 # Importacion de los modulos
 # ***************************
-from Pieza import *
+
 
 import pygame
 from pygame.locals import *
