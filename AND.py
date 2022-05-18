@@ -1,5 +1,6 @@
 from Pieza import *
 
+
 class AND(Pieza):
 
     def __init__(self, entrada1=0, entrada2=0):
@@ -9,6 +10,8 @@ class AND(Pieza):
     def comp(self):
         # Comportamineto de la Puerta logica
         self.salida = self.entrada1 and self.entrada2
+
+
 if __name__ == '__main__':
     n = AND()
     n.comp()

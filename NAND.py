@@ -1,5 +1,6 @@
 from Pieza import *
 
+
 class NAND(Pieza):
     def __init__(self, entrada1=0, entrada2=0):
         super().__init__(entrada1, entrada2)
@@ -9,8 +10,11 @@ class NAND(Pieza):
         # Comportamineto de la Puerta logica
         self.salida = int( not (self.entrada1 and self.entrada2))
 
-if __name__ == '__main__': #COMPROVAR QUE FUNCIONA BIEN
-    n = NAND(0,0)
+# COMPROVAR QUE FUNCIONA BIEN
+
+
+if __name__ == '__main__':
+    n = NAND()
     n.comp()
     print(n.entrada1)
     print(n.entrada2)

@@ -8,7 +8,6 @@
 # ***********************************************************
 
 
-
 # ***************************
 # Importacion de los modulos
 # ***************************
@@ -23,9 +22,12 @@ import sys
 # Constantes
 # ***********
 
-SCREEN_WIDTH = 640
-SCREEN_HEIGHT = 480
+SCREEN_WIDTH = 480
+SCREEN_HEIGHT = 640
 IMG_DIR = "FOTOS"
+Amarillo = (255, 255, 0)
+Blanco = (255, 255, 255)
+
 
 # ******************************
 # Clases y Funciones utilizadas
@@ -47,17 +49,10 @@ def load_image(nombre, IMG_DIR, alpha=False):
     return image
 
 
-
-
-Amarillo = (255, 255, 0)
-Blanco = (255, 255, 255)
-
-
 # Todas las puertas logicas heredan de la clase Pieza
 
 def main():
     pygame.init()
-
 
     # creamos la ventana y le indicamos un titulo:
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -76,8 +71,7 @@ def main():
 
     object = pygame.Rect((SCREEN_WIDTH // 4, SCREEN_WIDTH // 4), (200, 200))
 
-
-   # collide = pygame.Rect.colliderect(object,rect2)
+# collide = pygame.Rect.colliderect(object,rect2)
 
     running = True
     moving = False
@@ -102,7 +96,6 @@ def main():
                     rect2.top = object.top
                     rect2.left = object.left
 
-
             elif event.type == MOUSEBUTTONUP:
                 moving = False
 
@@ -112,7 +105,6 @@ def main():
         pygame.draw.rect(screen, Blanco, object)
         screen.blit(image, rect)
         screen.blit(image2, rect2)
-
 
         pygame.display.update()
 
