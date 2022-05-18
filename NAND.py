@@ -1,7 +1,7 @@
 from Pieza import *
 
 class NAND(Pieza):
-    def __init__(self, entrada1=0, entrada2=0):
+    def __init__(self, entrada1, entrada2):
         super().__init__(entrada1, entrada2)
         # self.image = load_image("NAND.png", IMG_DIR, alpha=True)
 
@@ -13,6 +13,8 @@ class NAND(Pieza):
             self.salida = 1
 
 if __name__ == '__main__':
-    n = NAND(1, 0)
+    n = NAND()
     n.comp()
+    print(n.entrada1)
+    print(n.entrada2)
     print(n.salida)

@@ -1,11 +1,19 @@
 from PuertasL import *
+from Hueco import *
 
-class Pieza:
+class Pieza(Hueco):
     # Definicion del comportamiento de las piezas en general
-    def __init__(self, entrada1=0, entrada2=0):
-        self.entrada1 = entrada1
-        self.entrada2 = entrada2
+    def __init__(self, entrada1, entrada2):
+        super().__init__(entrada1, entrada2)
+
+        self.entrada1 = Hueco.a
+        self.entrada2 = Hueco.b
         self.salida = None
 
-    def mov(self):
-        self.speed = [4, 4]
+if __name__ == '__main__':
+    n = Pieza()
+    print(Hueco.a)
+    print(n.entrada1)
+    print(Hueco.b)
+    print(n.entrada2)
+    print(n.salida)
