@@ -8,6 +8,8 @@ class Hueco:
         self.salida = None
 
 
+
+
 if __name__ == '__main__':
     n = Hueco()
     print(n.a)

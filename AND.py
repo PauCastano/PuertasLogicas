@@ -10,6 +10,7 @@ class AND(Pieza):
         super().__init__(entrada1, entrada2)
         self.image = pygame.image.load('FOTOS/AND.png')
 
+
     def comp(self):
         # Comportamineto de la Puerta logica
         self.salida = self.entrada1 and self.entrada2

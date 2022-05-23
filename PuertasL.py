@@ -65,24 +65,25 @@ def main():
     fondo = pygame.image.load('FOTOS/FONDO.jpg')
 
     image = NOR().image
-    image.convert()
 
+    image.convert()
     rect = image.get_rect()
-    rect.center= SCREEN_WIDTH//2, SCREEN_WIDTH//2
+    rect.center = SCREEN_WIDTH*1.5//3, SCREEN_HEIGHT*3.5//5 # En cada porta
 
     image2 = AND().image
     image2.convert()
 
     rect2 = image2.get_rect()
-    rect2.center = 400, 200
+    rect2.center = SCREEN_WIDTH*1.5//3, SCREEN_HEIGHT*4.5//5
 
-    object = pygame.Rect((SCREEN_WIDTH // 4, SCREEN_WIDTH // 4), (200, 200))
+    object = pygame.Rect(((SCREEN_WIDTH*1.5 // 3)-29, (SCREEN_WIDTH*1.5 // 5)-60), (58, 120))
 
 # collide = pygame.Rect.colliderect(object,rect2)
 
     running = True
     moving = False
 
+    x = 0
     portes = [rect, rect2]
     while running:
         for event in pygame.event.get():
@@ -99,9 +100,12 @@ def main():
                     if r.collidepoint(event.pos):
                         r.move_ip(event.rel)
 
-                if object.top == rect2.top:
-                    rect2.top = object.top
-                    rect2.left = object.left
+                if object.top == rect2.top and x == 0:
+                    rect2.center = object.center
+
+                    x = x+1
+                else:
+                    x = 0
 
             elif event.type == MOUSEBUTTONUP:
                 moving = False
