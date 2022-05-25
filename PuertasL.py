@@ -74,7 +74,7 @@ def main():
     P_NOR.center = SCREEN_WIDTH * 1.5 // 3, SCREEN_HEIGHT * 3.5 // 5
 
     P_AND = AND().image.get_rect()
-    P_AND.center = SCREEN_WIDTH*1.5//3, SCREEN_HEIGHT*4.5//5
+    P_AND.center = SCREEN_WIDTH * 1.5 // 3, SCREEN_HEIGHT * 4.5 // 5
 
     P_OR = OR().image.get_rect()
     P_OR.center = SCREEN_WIDTH*0.5//3, SCREEN_HEIGHT*4.5//5
@@ -112,6 +112,10 @@ def main():
 
             elif event.type == MOUSEBUTTONUP:
                 moving = False
+                for r in portes:
+                    if object.center != r.center:
+                        x = 0
+                        portes.remove(r)
 
 
         # L'ordre en que fem les figures importa en quines estan en primera fila
