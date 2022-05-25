@@ -64,17 +64,23 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     fondo = pygame.image.load('FOTOS/FONDO.jpg')
 
-    image = NOR().image
+    # image = NOR().image
+    # image.convert()
+    #
+    # rect = image.get_rect()
+    # rect.center = SCREEN_WIDTH*1.5//3, SCREEN_HEIGHT*3.5//5 # En cada porta
 
-    image.convert()
-    rect = image.get_rect()
-    rect.center = SCREEN_WIDTH*1.5//3, SCREEN_HEIGHT*3.5//5 # En cada porta
+    P_NOR = NOR().image.get_rect()
+    P_NOR.center = SCREEN_WIDTH * 1.5 // 3, SCREEN_HEIGHT * 3.5 // 5
 
-    image2 = AND().image
-    image2.convert()
+    P_AND = AND().image.get_rect()
+    P_AND.center = SCREEN_WIDTH*1.5//3, SCREEN_HEIGHT*4.5//5
 
-    rect2 = image2.get_rect()
-    rect2.center = SCREEN_WIDTH*1.5//3, SCREEN_HEIGHT*4.5//5
+    P_OR = OR().image.get_rect()
+    P_OR.center = SCREEN_WIDTH*0.5//3, SCREEN_HEIGHT*4.5//5
+
+    P_XOR = XOR().image.get_rect()
+    P_XOR.center = SCREEN_WIDTH * 0.5 // 3, SCREEN_HEIGHT * 3.5 // 5
 
     object = pygame.Rect(((SCREEN_WIDTH*1.5 // 3)-29, (SCREEN_WIDTH*1.5 // 5)-60), (58, 120))
 
@@ -84,7 +90,7 @@ def main():
     moving = False
 
     x = 0
-    portes = [rect, rect2]
+    portes = [P_NOR, P_AND, P_OR, P_XOR]
     while running:
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -100,12 +106,9 @@ def main():
                     if r.collidepoint(event.pos):
                         r.move_ip(event.rel)
 
-                if object.top == rect2.top and x == 0:
-                    rect2.center = object.center
-
-                    x = x+1
-                else:
-                    x = 0
+                    if object.top == r.top and x == 0:
+                        r.center = object.center
+                        x = x+1
 
             elif event.type == MOUSEBUTTONUP:
                 moving = False
@@ -114,8 +117,10 @@ def main():
         # L'ordre en que fem les figures importa en quines estan en primera fila
         screen.blit(fondo,(0,0))
         pygame.draw.rect(screen, Amarillo, object)
-        screen.blit(image, rect)
-        screen.blit(image2, rect2)
+        screen.blit(NOR().image, P_NOR)
+        screen.blit(AND().image, P_AND)
+        screen.blit(OR().image, P_OR)
+        screen.blit(XOR().image, P_XOR)
 
         pygame.display.update()
 
