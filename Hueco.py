@@ -2,7 +2,6 @@ import random
 from Pieza import *
 
 
-
 class Hueco:
     def __init__(self, entradas=None):
         if entradas is None:
@@ -12,17 +11,22 @@ class Hueco:
         self.salida = None
         self.Pieza = None
 
-    def comprobar(self):
-        if self.Pieza != None
+    def hay_pieza(self):
+        """
 
+        :return:
+        """
+        return self.Pieza is not None
 
-    def meter(self):
-        if self.Pieza
+    def meter(self, Pieza):
+        """
+        Importante, antes comprobar que esta vacio
+        :return:
+        """
+        self.Pieza = Pieza
 
-
-    def sacar(self):
-
-
+    def sacar(self, Pieza):
+        self.Pieza = None
 
 
 if __name__ == '__main__':
