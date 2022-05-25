@@ -1,5 +1,3 @@
-from Hueco import *
-
 
 class Pieza:
     # Definicion del comportamiento de las piezas en general

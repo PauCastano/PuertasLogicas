@@ -3,11 +3,11 @@ from Pieza import *
 
 
 class Hueco:
-    def __init__(self, entradas=None):
+    def __init__(self, cordenadas, entradas=None):
         if entradas is None:
             entradas = [random.randint(0, 1), random.randint(0, 1)]
-        self.a = a
-        self.b = b
+        self.a = entradas[0]
+        self.b = entradas[1]
         self.salida = None
         self.Pieza = None
 
@@ -29,8 +29,11 @@ class Hueco:
         self.Pieza = None
 
 
+
 if __name__ == '__main__':
-    n = Hueco()
+    n = Hueco(coords1, entradas)
+    n1 = Hueco(coords2, [0,0])
+
     print(n.a)
     print(n.b)
     print(n.salida)
