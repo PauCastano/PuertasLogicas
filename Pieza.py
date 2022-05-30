@@ -1,19 +1,18 @@
+import random
+
+tamanyo = 58, 120
+
 
 class Pieza:
     # Definicion del comportamiento de las piezas en general
-    def __init__(self, entrada1=Hueco(), entrada2=Hueco()):
+    def __init__(self, cordenadas, tamanyo,  entradas=None):
 
-        self.entrada1 = Hueco().a
-        self.entrada2 = Hueco().b
+        if entradas is None:
+            entradas = [random.randint(0, 1), random.randint(0, 1)]
+
+        self.a = entradas[0]
+        self.b = entradas[1]
+        self.cordenadas = cordenadas
+        self.tamanyo = tamanyo
         self.salida = None
 
-
-if __name__ == '__main__':
-    n = Pieza()
-    print(Hueco().a)
-    print(n.entrada1)
-
-    print(Hueco().b)
-    print(n.entrada2)
-
-    print(n.salida)

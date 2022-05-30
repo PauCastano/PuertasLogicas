@@ -17,12 +17,15 @@ import pygame
 from pygame.locals import *
 import os
 import sys
+
+import Hueco
 from AND import *
 from NAND import *
 from NOR import *
 from OR import *
 from XNOR import *
 from XOR import *
+from Hueco import *
 
 # ***********
 # Constantes
@@ -33,7 +36,11 @@ SCREEN_HEIGHT = 640
 IMG_DIR = "FOTOS"
 Amarillo = (255, 255, 0)
 Blanco = (255, 255, 255)
-
+cordenadas1 = 500, 400
+cordenadas2 = 500, 400
+cordenadas3 = 500, 400
+tamanyo = 58, 120
+resultado = 0
 
 # ******************************
 # Clases y Funciones utilizadas
@@ -60,6 +67,10 @@ def load_image(nombre, IMG_DIR, alpha=False):
 def main():
     pygame.init()
 
+    H1 = Hueco(cordenadas1, tamanyo, [1, 0])
+    H2 = Hueco(cordenadas2, tamanyo, [0, 1])
+    H3 = Hueco(cordenadas3, tamanyo, [H1.salida, H2.salida])
+
     # creamos la ventana y le indicamos un titulo:
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     fondo = pygame.image.load('FOTOS/FONDO.jpg')
@@ -82,14 +93,17 @@ def main():
     P_XOR = XOR().image.get_rect()
     P_XOR.center = SCREEN_WIDTH * 0.5 // 3, SCREEN_HEIGHT * 3.5 // 5
 
-    object = pygame.Rect(((SCREEN_WIDTH*1.5 // 3)-29, (SCREEN_WIDTH*1.5 // 5)-60), (58, 120))
+    Hueco1 = pygame.Rect(((SCREEN_WIDTH*1.5 // 3)-29, (SCREEN_WIDTH*1.5 // 5)-60), (58, 120))
+
+    Hueco2 = pygame.Rect(Hueco.H2.cordenadas, Hueco.H2.tamanyo)
+
+    Hueco3 = pygame.Rect(Hueco.H3.cordenadas, Hueco.H3.tamanyo)
 
 # collide = pygame.Rect.colliderect(object,rect2)
 
     running = True
     moving = False
 
-    x = 0
     portes = [P_NOR, P_AND, P_OR, P_XOR]
     while running:
         for event in pygame.event.get():
@@ -106,21 +120,28 @@ def main():
                     if r.collidepoint(event.pos):
                         r.move_ip(event.rel)
 
-                    if object.top == r.top and x == 0:
-                        r.center = object.center
-                        x = x+1
+                    if Hueco1.top == r.top:
+                        Hueco.H1.hay_pieza()
+
+                    elif Hueco2.top == r.top:
+                        Hueco.H2.hay_pieza()
+
+                    elif Hueco3.top == r.top:
+                        Hueco.H3.hay_pieza()
 
             elif event.type == MOUSEBUTTONUP:
                 moving = False
-                for r in portes:
-                    if object.center != r.center:
-                        x = 0
-                        portes.remove(r)
+
+            elif Hueco.H1.hay_pieza() and Hueco.H2.hay_pieza() and Hueco.H3.hay_pieza():
+                if Hueco.H3.salida == 1:
+                    resultado = 1
+                else:
+                    resultado = 0
 
 
         # L'ordre en que fem les figures importa en quines estan en primera fila
         screen.blit(fondo,(0,0))
-        pygame.draw.rect(screen, Amarillo, object)
+        pygame.draw.rect(screen, Amarillo, Hueco1)
         screen.blit(NOR().image, P_NOR)
         screen.blit(AND().image, P_AND)
         screen.blit(OR().image, P_OR)
