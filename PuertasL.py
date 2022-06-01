@@ -36,17 +36,19 @@ SCREEN_HEIGHT = 640
 IMG_DIR = "FOTOS"
 Amarillo = (255, 255, 0)
 Blanco = (255, 255, 255)
-cordenadas1 = 500, 400
-cordenadas2 = 500, 400
-cordenadas3 = 500, 400
-tamanyo = 58, 120
+# (WIDTH, HEIGHT)
+cordenadas1 = 211, 100
+cordenadas2 = 91, 260
+cordenadas3 = 331, 260
+tamanyo = 90, 90
 resultado = 0
 
 # ******************************
 # Clases y Funciones utilizadas
 # ******************************
 
-
+class nivel:
+    def __init__(self,):
 def load_image(nombre, IMG_DIR, alpha=False):
     ruta = os.path.join(IMG_DIR, nombre)
     try:
@@ -81,30 +83,29 @@ def main():
     # rect = image.get_rect()
     # rect.center = SCREEN_WIDTH*1.5//3, SCREEN_HEIGHT*3.5//5 # En cada porta
 
-    P_NOR = NOR().image.get_rect()
-    P_NOR.center = SCREEN_WIDTH * 1.5 // 3, SCREEN_HEIGHT * 3.5 // 5
+    # P_NOR = NOR().image.get_rect()
+    # P_NOR.center = SCREEN_WIDTH * 1.5 // 3, SCREEN_HEIGHT * 3.5 // 5
 
     P_AND = AND().image.get_rect()
     P_AND.center = SCREEN_WIDTH * 1.5 // 3, SCREEN_HEIGHT * 4.5 // 5
 
-    P_OR = OR().image.get_rect()
-    P_OR.center = SCREEN_WIDTH*0.5//3, SCREEN_HEIGHT*4.5//5
+    # P_OR = OR().image.get_rect()
+    # P_OR.center = SCREEN_WIDTH*0.5//3, SCREEN_HEIGHT*4.5//5
+    #
+    # P_XOR = XOR().image.get_rect()
+    # P_XOR.center = SCREEN_WIDTH * 0.5 // 3, SCREEN_HEIGHT * 3.5 // 5
 
-    P_XOR = XOR().image.get_rect()
-    P_XOR.center = SCREEN_WIDTH * 0.5 // 3, SCREEN_HEIGHT * 3.5 // 5
-
-    Hueco1 = pygame.Rect(((SCREEN_WIDTH*1.5 // 3)-29, (SCREEN_WIDTH*1.5 // 5)-60), (58, 120))
-
-    Hueco2 = pygame.Rect(Hueco.H2.cordenadas, Hueco.H2.tamanyo)
-
-    Hueco3 = pygame.Rect(Hueco.H3.cordenadas, Hueco.H3.tamanyo)
+    #Hueco1 = pygame.Rect(((SCREEN_WIDTH*1.5 // 3)-29, (SCREEN_WIDTH*1.5 // 5)-60), (58, 120))
+    Hueco1 = pygame.Rect(H1.cordenadas, H1.tamanyo)
+    Hueco2 = pygame.Rect(H2.cordenadas, H2.tamanyo)
+    Hueco3 = pygame.Rect(H3.cordenadas, H3.tamanyo)
 
 # collide = pygame.Rect.colliderect(object,rect2)
 
     running = True
     moving = False
 
-    portes = [P_NOR, P_AND, P_OR, P_XOR]
+    portes = [P_AND]
     while running:
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -120,32 +121,34 @@ def main():
                     if r.collidepoint(event.pos):
                         r.move_ip(event.rel)
 
-                    if Hueco1.top == r.top:
-                        Hueco.H1.hay_pieza()
-
-                    elif Hueco2.top == r.top:
-                        Hueco.H2.hay_pieza()
-
-                    elif Hueco3.top == r.top:
-                        Hueco.H3.hay_pieza()
+                    # if Hueco1.top == r.top:
+                    #     Hueco.H1.hay_pieza()
+                    #
+                    # elif Hueco2.top == r.top:
+                    #     Hueco.H2.hay_pieza()
+                    #
+                    # elif Hueco3.top == r.top:
+                    #     Hueco.H3.hay_pieza()
 
             elif event.type == MOUSEBUTTONUP:
                 moving = False
 
-            elif Hueco.H1.hay_pieza() and Hueco.H2.hay_pieza() and Hueco.H3.hay_pieza():
-                if Hueco.H3.salida == 1:
-                    resultado = 1
-                else:
-                    resultado = 0
+            # elif Hueco.H1.hay_pieza() and Hueco.H2.hay_pieza() and Hueco.H3.hay_pieza():
+            #     if Hueco.H3.salida == 1:
+            #         resultado = 1
+            #     else:
+            #         resultado = 0
 
 
         # L'ordre en que fem les figures importa en quines estan en primera fila
         screen.blit(fondo,(0,0))
         pygame.draw.rect(screen, Amarillo, Hueco1)
-        screen.blit(NOR().image, P_NOR)
+        pygame.draw.rect(screen, Amarillo, Hueco2)
+        pygame.draw.rect(screen, Amarillo, Hueco3)
+        # screen.blit(NOR().image, P_NOR)
         screen.blit(AND().image, P_AND)
-        screen.blit(OR().image, P_OR)
-        screen.blit(XOR().image, P_XOR)
+        # screen.blit(OR().image, P_OR)
+        # screen.blit(XOR().image, P_XOR)
 
         pygame.display.update()
 
