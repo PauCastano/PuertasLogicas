@@ -1,6 +1,7 @@
 #!/usr/bin/python3.4
 # Setup Python ----------------------------------------------- #
 import pygame, sys
+import pygame_menu
 
 # Setup pygame/window ---------------------------------------- #
 mainClock = pygame.time.Clock()
@@ -31,16 +32,23 @@ def main_menu():
 
         mx, my = pygame.mouse.get_pos()
 
-        button_1 = pygame.Rect(150, 300, 200, 50)
-        button_2 = pygame.Rect(150, 400, 200, 50)
+        button_1 = pygame.Rect(120, 200, 250, 50)
+        button_2 = pygame.Rect(120, 300, 250, 50)
+        button_3 = pygame.Rect(120,400,250,50)
         if button_1.collidepoint((mx, my)):
             if click:
                 TUTORIAL()
         if button_2.collidepoint((mx, my)):
             if click:
                 options()
+        if button_3.collidepoint((mx,my)):
+            if click:
+                pygame.quit()
+                sys.exit()
         pygame.draw.rect(screen, (0, 0, 0), button_1)
+        draw_text('TUTORIAL', font, (255,255,255), screen, 190, 215)
         pygame.draw.rect(screen, (0, 0, 0), button_2)
+        pygame.draw.rect(screen, (0, 0, 0), button_3)
 
         click = False
         for event in pygame.event.get():
@@ -66,26 +74,42 @@ def TUTORIAL():
 
         mx, my = pygame.mouse.get_pos()
 
-        button_1 = pygame.Rect(100, 250, 100, 50)
-        button_2 = pygame.Rect(100, 350, 100, 50)
-        button_3 = pygame.Rect(250, 250, 100, 50)
-        button_4 = pygame.Rect(250, 350, 100, 50)
-        button_5 = pygame.Rect(100, 450, 100, 50)
-        button_6 = pygame.Rect(250, 450, 100, 50)
-        # button_7 = pygame.Rect(100,500,100,30)
+        button_1 = pygame.Rect(120, 150, 100, 50)
+        button_2 = pygame.Rect(120, 250, 100, 50)
+        button_3 = pygame.Rect(270, 150, 100, 50)
+        button_4 = pygame.Rect(270, 250, 100, 50)
+        button_5 = pygame.Rect(120, 350, 100, 50)
+        button_6 = pygame.Rect(270, 350, 100, 50)
+        button_7 = pygame.Rect(120, 450, 250, 50)
         if button_1.collidepoint((mx, my)):
             if click:
-                game()
+                pass
         if button_2.collidepoint((mx, my)):
             if click:
-                options()
+                pass
+        if button_3.collidepoint((mx, my)):
+            if click:
+                pass
+        if button_4.collidepoint((mx, my)):
+            if click:
+                pass
+        if button_5.collidepoint((mx, my)):
+            if click:
+                pass
+        if button_6.collidepoint((mx, my)):
+            if click:
+                pass
+        if button_3.collidepoint((mx,my)):
+            if click:
+                pygame.quit()
+                sys.exit()
         pygame.draw.rect(screen, (0, 0, 0), button_1)
         pygame.draw.rect(screen, (0, 0, 0), button_2)
         pygame.draw.rect(screen, (255, 0, 0), button_3)
         pygame.draw.rect(screen, (255, 0, 0), button_4)
         pygame.draw.rect(screen, (0, 0, 0), button_5)
         pygame.draw.rect(screen, (0, 0, 0), button_6)
-        # pygame.draw.rect(screen, (255, 0, 0), button_7)
+        pygame.draw.rect(screen, (255, 0, 0), button_7)
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()
