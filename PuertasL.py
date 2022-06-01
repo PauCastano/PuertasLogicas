@@ -47,7 +47,8 @@ resultado = 0
 # Clases y Funciones utilizadas
 # ******************************
 
-
+class nivel:
+    def __init__(self,):
 def load_image(nombre, IMG_DIR, alpha=False):
     ruta = os.path.join(IMG_DIR, nombre)
     try:
