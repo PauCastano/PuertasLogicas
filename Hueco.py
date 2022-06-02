@@ -1,10 +1,12 @@
 import random
 from Pieza import *
 
-cordenadas1 = 500, 400
-cordenadas2 = 500, 400
-cordenadas3 = 500, 400
+# (WIDTH, HEIGHT)
+cordenadas1 = 211, 100
+cordenadas2 = 91, 260
+cordenadas3 = 331, 260
 tamanyo = 58, 120
+
 
 
 class Hueco:
@@ -17,7 +19,9 @@ class Hueco:
         self.tamanyo = tamanyo
         self.salida = None
         self.Pieza = None
-
+        H1 = Hueco(cordenadas1, tamanyo, [1, 0])
+        H2 = Hueco(cordenadas2, tamanyo, [0, 1])
+        H3 = Hueco(cordenadas3, tamanyo, [H1.salida, H2.salida])
     def hay_pieza(self):
         """
         :return:
