@@ -1,13 +1,19 @@
 import pygame, sys
 from Button import *
 
+
 pygame.init()
 
 SCREEN = pygame.display.set_mode((480, 640))
 pygame.display.set_caption("Menu")
 
 BG = pygame.image.load('FOTOS/FONDO.jpg')
-
+TAND = pygame.image.load('FOTOS/T.AND.png')
+TNAND = pygame.image.load('FOTOS/T.NAND.png')
+TOR = pygame.image.load('FOTOS/T.OR.PNG')
+TNOR = pygame.image.load('FOTOS/T.NOR.png')
+TXOR = pygame.image.load('FOTOS/T.XOR.PNG')
+TXNOR = pygame.image.load('FOTOS/T.XNOR.png')
 
 def get_font(size):  # Returns Press-Start-2P in the desired size
     return pygame.font.Font("FOTOS/font.ttf", size)
@@ -37,7 +43,7 @@ def TUTORIAL():
         XNOR_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON2.png"), pos=(350, 390),
                              text_input="XNOR", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
         QUIT_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON.png"), pos=(240, 550),
-                             text_input="SALIDA", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
+                             text_input="ATRAS", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
 
 
         for button in [AND_BUTTON, NAND_BUTTON, OR_BUTTON, NOR_BUTTON, XOR_BUTTON, XNOR_BUTTON, QUIT_BUTTON]:
@@ -62,23 +68,165 @@ def TUTORIAL():
                 if XNOR_BUTTON.checkForInput(TUTORIAL_MOUSE_POS):
                     XNOR()
                 if QUIT_BUTTON.checkForInput(TUTORIAL_MOUSE_POS):
-                    pygame.quit()
-                    sys.exit()
+                    main_menu()
 
         pygame.display.update()
-
 def AND():
-    pass
+    while True:
+        AND_MOUSE_POS = pygame.mouse.get_pos()
+
+        SCREEN.fill("black")
+        SCREEN.blit(BG, (0, 0))
+        SCREEN.blit(TAND, (50, 200))
+        AND_TEXT = get_font(40).render("AND", True, "#b68f40")
+        AND_RECT = AND_TEXT.get_rect(center=(240, 100))
+        SCREEN.blit(AND_TEXT, AND_RECT)
+
+        BACK_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON.png"), pos=(240, 550),
+                         text_input="ATRAS", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
+
+        BACK_BUTTON.changeColor(AND_MOUSE_POS)
+        BACK_BUTTON.update(SCREEN)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if BACK_BUTTON.checkForInput(AND_MOUSE_POS):
+                    TUTORIAL()
+
+        pygame.display.update()
 def NAND():
-    pass
+    while True:
+        NAND_MOUSE_POS = pygame.mouse.get_pos()
+
+        SCREEN.fill("black")
+        SCREEN.blit(BG, (0, 0))
+        SCREEN.blit(TNAND, (50, 200))
+        NAND_TEXT = get_font(40).render("NAND", True, "#b68f40")
+        NAND_RECT = NAND_TEXT.get_rect(center=(240, 100))
+        SCREEN.blit(NAND_TEXT, NAND_RECT)
+
+        BACK_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON.png"), pos=(240, 550),
+                             text_input="ATRAS", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
+
+        BACK_BUTTON.changeColor(NAND_MOUSE_POS)
+        BACK_BUTTON.update(SCREEN)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if BACK_BUTTON.checkForInput(NAND_MOUSE_POS):
+                    TUTORIAL()
+
+        pygame.display.update()
 def OR():
-    pass
+    while True:
+        OR_MOUSE_POS = pygame.mouse.get_pos()
+
+        SCREEN.fill("black")
+        SCREEN.blit(BG, (0, 0))
+        SCREEN.blit(TOR, (50, 200))
+        OR_TEXT = get_font(40).render("OR", True, "#b68f40")
+        OR_RECT = OR_TEXT.get_rect(center=(240, 100))
+        SCREEN.blit(OR_TEXT, OR_RECT)
+
+        BACK_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON.png"), pos=(240, 550),
+                             text_input="ATRAS", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
+
+        BACK_BUTTON.changeColor(OR_MOUSE_POS)
+        BACK_BUTTON.update(SCREEN)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if BACK_BUTTON.checkForInput(OR_MOUSE_POS):
+                    TUTORIAL()
+
+        pygame.display.update()
 def NOR():
-    pass
+    while True:
+        NOR_MOUSE_POS = pygame.mouse.get_pos()
+
+        SCREEN.fill("black")
+        SCREEN.blit(BG, (0, 0))
+        SCREEN.blit(TNOR, (50, 200))
+        NOR_TEXT = get_font(40).render("NOR", True, "#b68f40")
+        NOR_RECT = NOR_TEXT.get_rect(center=(240, 100))
+        SCREEN.blit(NOR_TEXT, NOR_RECT)
+
+        BACK_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON.png"), pos=(240, 550),
+                             text_input="ATRAS", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
+
+        BACK_BUTTON.changeColor(NOR_MOUSE_POS)
+        BACK_BUTTON.update(SCREEN)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if BACK_BUTTON.checkForInput(NOR_MOUSE_POS):
+                    TUTORIAL()
+
+        pygame.display.update()
 def XOR():
-    pass
+    while True:
+        XOR_MOUSE_POS = pygame.mouse.get_pos()
+
+        SCREEN.fill("black")
+        SCREEN.blit(BG, (0, 0))
+        SCREEN.blit(TXOR, (50, 200))
+        XOR_TEXT = get_font(40).render("XOR", True, "#b68f40")
+        XOR_RECT = XOR_TEXT.get_rect(center=(240, 100))
+        SCREEN.blit(XOR_TEXT, XOR_RECT)
+
+        BACK_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON.png"), pos=(240, 550),
+                             text_input="ATRAS", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
+
+        BACK_BUTTON.changeColor(XOR_MOUSE_POS)
+        BACK_BUTTON.update(SCREEN)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if BACK_BUTTON.checkForInput(XOR_MOUSE_POS):
+                    TUTORIAL()
+
+        pygame.display.update()
 def XNOR():
-    pass
+    while True:
+        XNOR_MOUSE_POS = pygame.mouse.get_pos()
+
+        SCREEN.fill("black")
+        SCREEN.blit(BG, (0, 0))
+        SCREEN.blit(TXNOR, (50, 200))
+        XNOR_TEXT = get_font(40).render("XNOR", True, "#b68f40")
+        XNOR_RECT = XNOR_TEXT.get_rect(center=(240, 100))
+        SCREEN.blit(XNOR_TEXT, XNOR_RECT)
+
+        BACK_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON.png"), pos=(240, 550),
+                             text_input="ATRAS", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
+
+        BACK_BUTTON.changeColor(XNOR_MOUSE_POS)
+        BACK_BUTTON.update(SCREEN)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if BACK_BUTTON.checkForInput(XNOR_MOUSE_POS):
+                    TUTORIAL()
+
+        pygame.display.update()
 def JUEGO():
     while True:
         OPTIONS_MOUSE_POS = pygame.mouse.get_pos()
