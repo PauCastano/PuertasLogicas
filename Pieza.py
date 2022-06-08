@@ -12,6 +12,7 @@ class Pieza():
 
         self.a = entradas[0]
         self.b = entradas[1]
+
         self.cordenadas = cordenadas
         self.tamanyo = tamanyo
         self.salida = None

@@ -7,12 +7,10 @@ class NOR(Pieza):
     pygame.init()
 
     def __init__(self, entradas=None):
-        #super().__init__(entrada1, entrada2)
+        super().__init__(entrada1, entrada2)
         self.image = pygame.image.load('FOTOS/NOR.png')
-        if entradas is None:
-            entradas = [random.randint(0, 1), random.randint(0, 1)]
-        self.entrada1 = entradas[0]
-        self.entrada2 = entradas[1]
+        self.entrada1 =             #
+        self.entrada2 =
 
     def comp(self):
         # Comportamineto de la Puerta logica
