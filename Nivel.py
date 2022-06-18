@@ -35,14 +35,13 @@ class Nivel:
 
 
 if __name__ == '__main__':
-    n = Nivel(4, [AND()])
+    n = Nivel(4, [AND(), OR(), NAND()])
 
     print(n.input)
     print('AND', n.pieza[0].comp(n.input[:2]))
-    #print('OR', n.pieza[1].comp(n.input[:2]))
-
-    #print(n.pieza[2].comp([(n.pieza[0].comp(n.input[:2])),
-     #                                  (n.pieza[1].comp(n.input[2:4]))]))
+    # print('OR', n.pieza[1].comp(n.input[:2]))
+    # print(n.pieza[2].comp([(n.pieza[0].comp(n.input[:2])),
+    #                                  (n.pieza[1].comp(n.input[2:4]))]))
     print(n.posible_solucion)
 
 
