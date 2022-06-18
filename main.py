@@ -227,28 +227,43 @@ def XNOR():
                     TUTORIAL()
 
         pygame.display.update()
-def JUEGO():
+def PLAY():
     while True:
-        OPTIONS_MOUSE_POS = pygame.mouse.get_pos()
+        PLAY_MOUSE_POS = pygame.mouse.get_pos()
 
-        SCREEN.fill("white")
+        SCREEN.fill("black")
+        SCREEN.blit(BG, (0, 0))
 
-        OPTIONS_TEXT = get_font(45).render("This is the OPTIONS screen.", True, "Black")
-        OPTIONS_RECT = OPTIONS_TEXT.get_rect(center=(640, 260))
-        SCREEN.blit(OPTIONS_TEXT, OPTIONS_RECT)
+        PLAY_TEXT = get_font(40).render("PLAY", True, "#b68f40")
+        PLAY_RECT = PLAY_TEXT.get_rect(center=(240, 100))
+        SCREEN.blit(PLAY_TEXT, PLAY_RECT)
 
-        OPTIONS_BACK = Button(image=None, pos=(640, 460),
-                              text_input="BACK", font=get_font(75), base_color="Black", hovering_color="Green")
+        NIVEL1_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON3.png"), pos=(240, 250),
+                                 text_input="NIVEL 1", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
+        NIVEL2_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON3.png"), pos=(240, 320),
+                             text_input="NIVEL 2", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
+        NIVEL3_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON3.png"), pos=(240, 390),
+                             text_input="NIVEL 3", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
+        QUIT_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON.png"), pos=(240, 550),
+                             text_input="ATRAS", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
 
-        OPTIONS_BACK.changeColor(OPTIONS_MOUSE_POS)
-        OPTIONS_BACK.update(SCREEN)
+
+        for button in [NIVEL1_BUTTON,NIVEL2_BUTTON,NIVEL3_BUTTON, QUIT_BUTTON]:
+            button.changeColor(PLAY_MOUSE_POS)
+            button.update(SCREEN)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if OPTIONS_BACK.checkForInput(OPTIONS_MOUSE_POS):
+                if NIVEL1_BUTTON.checkForInput(PLAY_MOUSE_POS):
+                    pass
+                if NIVEL2_BUTTON.checkForInput(PLAY_MOUSE_POS):
+                    pass
+                if NIVEL3_BUTTON.checkForInput(PLAY_MOUSE_POS):
+                    pass
+                if QUIT_BUTTON.checkForInput(PLAY_MOUSE_POS):
                     main_menu()
 
         pygame.display.update()
@@ -284,7 +299,7 @@ def main_menu():
                 if TUTORIAL_BUTTON.checkForInput(MENU_MOUSE_POS):
                     TUTORIAL()
                 if PLAY_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    JUEGO()
+                    PLAY()
                 if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
                     pygame.quit()
                     sys.exit()
