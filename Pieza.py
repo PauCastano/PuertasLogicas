@@ -3,7 +3,7 @@ import random
 
 class Pieza:
     # Definicion del comportamiento de las piezas en general
-    def __init__(self, cordenadas, tamanyo,  entradas=None):
+    def __init__(self,tamanyo, cordenadas=None, entradas=None):
 
         if entradas is None:
             entradas = [random.randint(0, 1), random.randint(0, 1)]

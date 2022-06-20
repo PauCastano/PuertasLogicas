@@ -91,7 +91,7 @@ class Nivel:
         P_OR.center = SCREEN_WIDTH * 0.5 // 3, SCREEN_HEIGHT * 4.5 // 5
 
         # Hueco1 = pygame.Rect(((SCREEN_WIDTH*1.5 // 3)-29, (SCREEN_WIDTH*1.5 // 5)-60), (58, 120))
-        Hueco1 = pygame.Rect(huecos)
+        # Hueco1 = pygame.Rect(huecos)
         # Hueco2 = pygame.Rect(H2.cordenadas, H2.tamanyo)
         # Hueco3 = pygame.Rect(H3.cordenadas, H3.tamanyo)
 
