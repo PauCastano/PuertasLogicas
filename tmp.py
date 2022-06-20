@@ -19,8 +19,8 @@ cordenadas1 = 211, 100
 cordenadas2 = 91, 260
 cordenadas3 = 331, 260
 
-P_AND = AND((58, 120)).image.get_rect()
-P_AND.center = AND((58, 120)).pos
+P_AND = AND().image.get_rect()
+P_AND.center = AND().pos
 
 Hueco1 = pygame.Rect((210, 75), (58, 120))
 Hueco2 = pygame.Rect((90, 240), (58, 120))
