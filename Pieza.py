@@ -1,9 +1,7 @@
 import random
 
-tamanyo = 58, 120
 
-
-class Pieza():
+class Pieza:
     # Definicion del comportamiento de las piezas en general
     def __init__(self, cordenadas, tamanyo,  entradas=None):
 
@@ -13,7 +11,7 @@ class Pieza():
         self.a = entradas[0]
         self.b = entradas[1]
 
-        self.cordenadas = cordenadas
-        self.tamanyo = tamanyo
+        self.cordenadas = [40, 90, 100, 210, 260, 330, 400, 576]
+        self.tamanyo = (58, 120)
         self.salida = None
 

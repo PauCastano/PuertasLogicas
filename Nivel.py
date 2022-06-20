@@ -35,7 +35,7 @@ class Nivel:
 
 
 if __name__ == '__main__':
-    n = Nivel(4, [AND(), OR(), NAND()])
+    n = Nivel(2, [AND()])
 
     print(n.input)
     print('AND', n.pieza[0].comp(n.input[:2]))
