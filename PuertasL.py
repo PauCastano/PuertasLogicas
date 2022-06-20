@@ -74,7 +74,7 @@ class Nivel:
 
                 if (self.pieza[0].comp((self.pieza[1].comp(self.input[0:1])), (self.pieza[2].comp(self.input[2:3])))) == self.output:
 
-                    self.posible_solucion= [self.pieza[0], self.pieza[1], self.pieza[2]]
+                    self.posible_solucion= [self.pieza[0], self.pieza[1], self.pieza[2]].
         '''
 
         if self.pieza[0].comp(self.caracteristcas) == self.output:
