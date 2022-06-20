@@ -18,11 +18,6 @@ from pygame.locals import *
 import os
 import sys
 from AND import *
-from NAND import *
-from NOR import *
-from OR import *
-from XNOR import *
-from XOR import *
 from Hueco import *
 
 # ***********
@@ -51,13 +46,12 @@ class Nivel:
     #input, output, hueco, pieza, conector,
     def __init__(self, n_input):
         """
-        >>> N = Nivel([1, 1], [Hueco(cordenadas1, tamanyo, inputs)], [NOR(inputs), AND(inputs)])
         :param inputs:
         :param outputs:
         :param huecos:
         :param puertas:
         """
-        self.caracteristcas = [random.randint(0,1) for i in range(n_input+1)]  # devuelve una lista de 5 valores entre 0 y 1,
+        self.caracteristcas = [random.randint(0, 1) for i in range(n_input+1)]  # devuelve una lista de 5 valores entre 0 y 1,
         self.input = self.caracteristcas[:2]    # en esta lista estan los inputs y los outputs
         self.output = self.caracteristcas[-1]
         self.n_hueco = n_input - 1
@@ -77,7 +71,7 @@ class Nivel:
                     self.posible_solucion= [self.pieza[0], self.pieza[1], self.pieza[2]].
         '''
 
-        if self.pieza[0].comp(self.caracteristcas) == self.output:
+        if self.pieza[0].comp(self.input) == self.output:
             return print(self.posible_solucion.append(self.pieza))
 
         # creamos la ventana:
@@ -91,8 +85,8 @@ class Nivel:
         P_AND = AND().image.get_rect()
         P_AND.center = SCREEN_WIDTH * 1.5 // 3, SCREEN_HEIGHT * 4.5 // 5
 
-        P_OR = OR().image.get_rect()
-        P_OR.center = SCREEN_WIDTH * 0.5 // 3, SCREEN_HEIGHT * 4.5 // 5
+       # P_OR = OR().image.get_rect()
+       # P_OR.center = SCREEN_WIDTH * 0.5 // 3, SCREEN_HEIGHT * 4.5 // 5
 
         # Hueco1 = pygame.Rect(((SCREEN_WIDTH*1.5 // 3)-29, (SCREEN_WIDTH*1.5 // 5)-60), (58, 120))
         #Hueco1 = pygame.Rect(huecos)
@@ -139,12 +133,12 @@ class Nivel:
                 #         resultado = 0
 
             # L'ordre en que fem les figures importa en quines estan en primera fila
-            screen.blit(fondo, (0, 0))
-            pygame.draw.rect(screen, Amarillo, Hueco1)
+            #screen.blit(fondo, (0, 0))
+           # pygame.draw.rect(screen, Amarillo, Hueco1)
             # pygame.draw.rect(screen, Amarillo, Hueco2)
             # pygame.draw.rect(screen, Amarillo, Hueco3)
-            screen.blit(NOR().image, P_NOR)
-            screen.blit(AND().image, P_AND)
+           # screen.blit(NOR().image, P_NOR)
+           # screen.blit(AND().image, P_AND)
             # screen.blit(OR().image, P_OR)
             # screen.blit(XOR().image, P_XOR)
 
@@ -153,4 +147,6 @@ class Nivel:
 
 if __name__ == "__main__":
     N = Nivel(2)
-    print(N.rellenar_huecos())
+    N.rellenar_huecos()
+
+    print(N.posible_solucion.append(N.pieza))

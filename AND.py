@@ -12,7 +12,7 @@ class AND(Pieza):
         self.pos = (self.cordenadas[1], self.cordenadas[6])
         self.tamanyo = self.tamanyo
 
-    def comp(self):
+    def comp(self, input):
         # Comportamineto de la Puerta logica
         self.salida = self.a and self.b
         return self.salida
