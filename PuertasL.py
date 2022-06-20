@@ -48,8 +48,8 @@ resultado = 0
 
 class Nivel:
     pygame.init()
-
-    def __init__(self, input, output, hueco, pieza, conector, n_input):
+    #input, output, hueco, pieza, conector,
+    def __init__(self, n_input):
         """
         >>> N = Nivel([1, 1], [Hueco(cordenadas1, tamanyo, inputs)], [NOR(inputs), AND(inputs)])
         :param inputs:
@@ -57,15 +57,15 @@ class Nivel:
         :param huecos:
         :param puertas:
         """
-        self.caracteristcas = random.sample(range(1), n_input + 1)  # devuelve una lista de 5 valores entre 0 y 1,
-        self.input = self.caracteristcas[:4]    # en esta lista estan los inputs y los outputs
+        self.caracteristcas = [random.randint(0,1) for i in range(n_input+1)]  # devuelve una lista de 5 valores entre 0 y 1,
+        self.input = self.caracteristcas[:2]    # en esta lista estan los inputs y los outputs
         self.output = self.caracteristcas[-1]
         self.n_hueco = n_input - 1
-        self.pieza = []                         # listado de piezas utilizado en el nivel
+        self.pieza = [AND()]                         # listado de piezas utilizado en el nivel
         self.posible_solucion = []
 
     def rellenar_huecos(self):
-
+        '''
         random.shuffle(self.pieza)
 
         for x in range(len(self.pieza)):
@@ -74,7 +74,11 @@ class Nivel:
 
                 if (self.pieza[0].comp((self.pieza[1].comp(self.input[0:1])), (self.pieza[2].comp(self.input[2:3])))) == self.output:
 
-                    self.posible_solucion= [self.pieza[0], self.pieza[1], self.pieza[2]]
+                    self.posible_solucion= [self.pieza[0], self.pieza[1], self.pieza[2]].
+        '''
+
+        if self.pieza[0].comp(self.caracteristcas) == self.output:
+            return print(self.posible_solucion.append(self.pieza))
 
         # creamos la ventana:
         screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -91,7 +95,7 @@ class Nivel:
         P_OR.center = SCREEN_WIDTH * 0.5 // 3, SCREEN_HEIGHT * 4.5 // 5
 
         # Hueco1 = pygame.Rect(((SCREEN_WIDTH*1.5 // 3)-29, (SCREEN_WIDTH*1.5 // 5)-60), (58, 120))
-        # Hueco1 = pygame.Rect(huecos)
+        #Hueco1 = pygame.Rect(huecos)
         # Hueco2 = pygame.Rect(H2.cordenadas, H2.tamanyo)
         # Hueco3 = pygame.Rect(H3.cordenadas, H3.tamanyo)
 
@@ -148,4 +152,5 @@ class Nivel:
 
 
 if __name__ == "__main__":
-    N = Nivel([1, 1], [Hueco(cordenadas1, tamanyo, [1, 1])], [NOR([1, 1]), AND([1, 1])])
+    N = Nivel(2)
+    print(N.rellenar_huecos())
