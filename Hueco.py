@@ -2,9 +2,9 @@ import random
 from Pieza import *
 
 # (WIDTH, HEIGHT)
-cordenadas1 = 211, 100
-cordenadas2 = 91, 260
-cordenadas3 = 331, 260
+cordenadas1 = 210, 75
+cordenadas2 = 90, 240
+cordenadas3 = 330, 240
 tamanyo = 58, 120
 
 
