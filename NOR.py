@@ -9,8 +9,6 @@ class NOR(Pieza):
     def __init__(self, entradas=None):
         super().__init__(entrada1, entrada2)
         self.image = pygame.image.load('FOTOS/NOR.png')
-        self.entrada1 =             #
-        self.entrada2 =
 
     def comp(self):
         # Comportamineto de la Puerta logica
