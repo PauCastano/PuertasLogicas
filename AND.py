@@ -5,12 +5,12 @@ from pygame.locals import *
 
 class AND(Pieza):
 
-    def __init__(self,tamanyo, cordenadas=None, entradas=None):
+    def __init__(self,tamanyo=None, cordenadas=None, entradas=None):
         super().__init__(tamanyo, cordenadas, entradas)
 
         self.image = pygame.image.load('FOTOS/AND.png')
-        self.pos = (90, 475)
-        self.tamanyo = tamanyo
+        self.pos = (self.cordenadas[1], self.cordenadas[6])
+        self.tamanyo = self.tamanyo
 
     def comp(self):
         # Comportamineto de la Puerta logica
@@ -19,7 +19,7 @@ class AND(Pieza):
 
 
 if __name__ == '__main__':
-    n = AND([40, 90, 100, 210, 260, 330, 400, 576], (58, 120))
+    n = AND()
     print(n.pos)
     print(n.tamanyo)
 

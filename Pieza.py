@@ -11,7 +11,7 @@ class Pieza:
         self.a = entradas[0]
         self.b = entradas[1]
 
-        self.cordenadas = [40, 90, 100, 210, 260, 330, 400, 576]
+        self.cordenadas = [40, 90, 75, 210, 240, 330, 475, 576]
         self.tamanyo = (58, 120)
         self.salida = None
 
