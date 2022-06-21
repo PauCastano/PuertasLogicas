@@ -19,9 +19,9 @@ class Hueco:
         self.tamanyo = tamanyo
         self.salida = None
         self.Pieza = None
-        H1 = Hueco(cordenadas1, tamanyo, [1, 0])
-        H2 = Hueco(cordenadas2, tamanyo, [0, 1])
-        H3 = Hueco(cordenadas3, tamanyo, [H1.salida, H2.salida])
+        # H1 = Hueco(cordenadas1, tamanyo, [1, 0])
+        # H2 = Hueco(cordenadas2, tamanyo, [0, 1])
+        # H3 = Hueco(cordenadas3, tamanyo, [H1.salida, H2.salida])
 
     def hay_pieza(self):
         """
