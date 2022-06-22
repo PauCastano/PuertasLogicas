@@ -6,18 +6,16 @@ from pygame.locals import *
 class OR(Pieza):
     pygame.init()
 
-    def __init__(self, entradas=None, cordenadas=None):
-        super().__init__(cordenadas, tamanyo,  entradas=None)
+    def __init__(self, tamanyo=None, cordenadas=None, entradas=None):
+        super().__init__(tamanyo, cordenadas, entradas)
+
         self.image = pygame.image.load('FOTOS/OR.png')
+        self.pos = (self.cordenadas[3], self.cordenadas[6])
+        self.tamanyo = self.tamanyo
 
-        if entradas is None:
-            entradas = [random.randint(0, 1), random.randint(0, 1)]
-        self.entrada1 = entradas[0]
-        self.entrada2 = entradas[1]
-
-    def comp(self, entradas):
+    def comp(self, input):
         # Comportamineto de la Puerta logica
-        self.salida = self.entrada1 or self.entrada2
+        self.salida = self.a or self.b
         return self.salida
 
 
