@@ -9,19 +9,11 @@ tamanyo = 58, 120
 
 
 class Hueco:
-    def __init__(self, cordenadas, tamanyo, entradas=None):
-        if entradas is None:
-            entradas = [random.randint(0, 1), random.randint(0, 1)]
-
-        self.a = entradas[0]
-        self.b = entradas[1]
+    def __init__(self, cordenadas, tamanyo):
         self.cordenadas = cordenadas
         self.tamanyo = tamanyo
         self.salida = None
         self.Pieza = None
-        H1 = Hueco(cordenadas1, tamanyo, [1, 0])
-        H2 = Hueco(cordenadas2, tamanyo, [0, 1])
-        H3 = Hueco(cordenadas3, tamanyo, [H1.salida, H2.salida])
 
     def hay_pieza(self):
         """
@@ -31,7 +23,7 @@ class Hueco:
 
     def meter(self, Pieza):
         """
-        Importante, antes comprobar que esta vacio
+        Importante, antes comprobar que esta vacio.
         :return:
         """
         self.Pieza = Pieza
@@ -39,9 +31,13 @@ class Hueco:
     def sacar(self, Pieza):
         self.Pieza = None
 
+    def comp(self, inputs):
+        return self.Pieza.comp(inputs)
 
 if __name__ == '__main__':
-    H1 = Hueco(cordenadas1, tamanyo, [1, 0])
-    H2 = Hueco(cordenadas2, tamanyo, [0, 1])
-    H3 = Hueco(cordenadas3, tamanyo, [H1.salida, H2.salida])
+    from AND import *
+
+    H1 = Hueco([], [])
+    H1.meter(AND())
+    print(H1.comp([0, 1]))
 
