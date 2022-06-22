@@ -23,7 +23,7 @@ class Hueco:
 
     def meter(self, Pieza):
         """
-        Importante, antes comprobar que esta vacio
+        Importante, antes comprobar que esta vacio.
         :return:
         """
         self.Pieza = Pieza
