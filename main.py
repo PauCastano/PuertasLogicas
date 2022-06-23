@@ -1,5 +1,20 @@
-import pygame, sys
+# ***********************************************************
+# Programa Puertas logicas PRE (PROGRAMACIÓ PER A ENGINYERS)
+# Curso Primavera 2021-2022
+# Nombres:
+#           Ariadna Delriu Carulla
+#           Pau Castaño i Ferré
+#           Guillem Rovira Herrero
+# ***********************************************************
+
+
+# ***************************
+# Importacion de los modulos
+# ***************************
+import pygame, sys, random
 from Button import *
+from Pieza import *
+
 
 
 pygame.init()

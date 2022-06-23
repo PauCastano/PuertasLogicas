@@ -4,13 +4,21 @@ from pygame.locals import *
 
 
 class XOR(Pieza):
-    def __init__(self, entradas=None, cordenadas=None):
-        super().__init__(cordenadas, tamanyo,  entradas)
-        self.image = pygame.image.load('FOTOS/XOR.png')
+    def __init__(self, tamanyo=None, cordenadas=None):
+        super().__init__(tamanyo, cordenadas)
 
-    def comp(self):
+        self.image = pygame.image.load('FOTOS/XOR.png')
+        self.rect = self.image.get_rect()
+        self.pos = (self.cordenadas[1], self.cordenadas[6])
+        self.tamanyo = self.tamanyo
+        self.entradas = 2
+
+    def comp(self,inputs):
         # Comportamineto de la Puerta logica
-        self.salida = self.a^self.b
+        if len(inputs) != self.entradas:
+            raise LoQueSea
+        self.salida = inputs[0]^inputs[1]
+        return self.salida
 
 
 if __name__ == '__main__':
