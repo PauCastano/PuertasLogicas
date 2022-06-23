@@ -9,9 +9,12 @@ class AND(Pieza):
         super().__init__(tamanyo, cordenadas)
 
         self.image = pygame.image.load('FOTOS/AND.png')
+        self.rect = self.image.get_rect()
         self.pos = (self.cordenadas[1], self.cordenadas[6])
         self.tamanyo = self.tamanyo
         self.entradas = 2
+
+
 
     def comp(self, inputs):
         # Comportamineto de la Puerta logica
@@ -19,6 +22,10 @@ class AND(Pieza):
             raise LoQueSea
         self.salida = inputs[0] and inputs[1]
         return self.salida
+
+    def update(self):
+        pass
+
 
 
 if __name__ == '__main__':
