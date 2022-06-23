@@ -28,6 +28,7 @@ class Nivel:
         pass
 
 
+
 if __name__ == '__main__':
     n = Nivel(2)
 

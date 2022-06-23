@@ -1,19 +1,22 @@
 import random
 from Pieza import *
+import pygame
 
-# (WIDTH, HEIGHT)
-cordenadas1 = 210, 75
-cordenadas2 = 90, 240
-cordenadas3 = 330, 240
+cordenadas = 330, 240
 tamanyo = 58, 120
 
 
-class Hueco:
-    def __init__(self, cordenadas, tamanyo):
+class Hueco(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+
         self.cordenadas = cordenadas
         self.tamanyo = tamanyo
         self.salida = None
         self.Pieza = None
+
+        self.image = pygame.image.load('FOTOS/Hueco.PNG').convert()
+        self.rect = self.image.get_rect()
 
     def hay_pieza(self):
         """
