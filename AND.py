@@ -1,20 +1,18 @@
 from Pieza import *
 import pygame
-from pygame.locals import *
 
 
 class AND(Pieza):
+    pygame.init()
 
     def __init__(self, tamanyo=None, cordenadas=None):
         super().__init__(tamanyo, cordenadas)
 
         self.image = pygame.image.load('FOTOS/AND.png')
         self.rect = self.image.get_rect()
-        self.pos = (self.cordenadas[1], self.cordenadas[6])
+        self.pos = (self.cordenadas[3], self.cordenadas[6])
         self.tamanyo = self.tamanyo
         self.entradas = 2
-
-
 
     def comp(self, inputs):
         # Comportamineto de la Puerta logica
@@ -24,7 +22,10 @@ class AND(Pieza):
         return self.salida
 
     def update(self):
-        pass
+        mouse_pos = pygame.mouse.get_pos()
+
+        self.rect.x = mouse_pos[0]
+        self.rect.y = mouse_pos[1]
 
 
 

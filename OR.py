@@ -1,10 +1,8 @@
 from Pieza import *
 import pygame
-from pygame.locals import *
 
 
 class OR(Pieza):
-    pygame.init()
 
     def __init__(self, tamanyo=None, cordenadas=None):
         super().__init__(tamanyo, cordenadas)
@@ -22,10 +20,17 @@ class OR(Pieza):
         self.salida = inputs[0] or inputs[1]
         return self.salida
 
+    def update(self):
+        mouse_pos = pygame.mouse.get_pos()
+
+        self.rect.x = mouse_pos[0]
+        self.rect.y = mouse_pos[1]
+
 
 if __name__ == '__main__':
     n = OR()
-    n.comp()
-    print(n.entrada1)
-    print(n.entrada2)
+    print(n.pos)
+    print(n.tamanyo)
+
+    n.comp([0, 1])
     print(n.salida)

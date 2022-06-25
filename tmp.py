@@ -63,12 +63,17 @@ def main():
     H3.rect.y = 240
 
     P_AND = AND()
-    P_AND.rect.x = 90
-    P_AND.rect.y = 475
+    P_AND.rect.x = AND().pos[0]
+    P_AND.rect.y = AND().pos[1]
+
+    P_OR = OR()
+    P_OR.rect.x = OR().pos[0]
+    P_OR.rect.y = OR().pos[1]
 
     lista_huecos.add(H1, H2, H3)
-    lista_puertas.add(P_AND)
-    lista_todos_sprites.add(H1, H2, H3, P_AND)
+    lista_puertas.add(P_AND, P_OR)
+    lista_todos_sprites.add(H1, H2, H3, P_AND, P_OR)
+
 
 
     while running:
@@ -83,32 +88,25 @@ def main():
                         moving = True
 
             elif event.type == MOUSEMOTION and moving:
+
                 for r in lista_puertas:
 
-                    mouse_pos = pygame.mouse.get_pos()
-                    r.rect.x = mouse_pos[0]
-                    r.rect.y = mouse_pos[1]
+                    if r.rect.collidepoint(event.pos):
+                        r.rect.move_ip(event.rel)
 
-                    lista_huecos_llenos = pygame.sprite.groupcollide(lista_puertas, lista_huecos, False, True)
+                # for r in lista_puertas:
+                #     r.update()
 
-                    for lista_huecos in lista_huecos_llenos:
-                        r.rect.center = H1.rect.center
-
-                # for r in portes:
-                    # if r.collidepoint(event.pos):
-                    #     r.move_ip(event.rel)
-
-                    # if Hueco1.top == r.top:
-                    #     r.center = Hueco1.center
-                    #     H1.hay_pieza()
-
-                    # if Hueco2.center == r.center:
-                    #     r.center = Hueco2.center
-                    #     H2.hay_pieza()
+                    # pos = pygame.mouse.get_pos()
                     #
-                    # if Hueco3.center == r.center:
-                    #     r.center = Hueco3.center
-                    #     H3.hay_pieza()
+                    # r.rect.x = pos[0]
+                    # r.rect.y = pos[1]
+
+                    # lista_huecos_llenos = pygame.sprite.groupcollide(lista_puertas, lista_huecos, False, True)
+
+                    choque = pygame.sprite.spritecollideany(r, lista_huecos)
+                    if choque:
+                        r.rect.center = choque.rect.center
 
             elif event.type == MOUSEBUTTONUP:
                 moving = False
