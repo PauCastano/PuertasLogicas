@@ -4,6 +4,7 @@ from pygame.locals import *
 import os
 import sys
 from AND import *
+from OR import *
 
 
 class Nivel:
@@ -16,7 +17,7 @@ class Nivel:
         self.input = self.caracteristcas[:2]  # en esta lista estan los inputs y los outputs
         self.output = self.caracteristcas[-1]
         self.n_hueco = n_input - 1
-        self.piezas = [AND()]  # listado de piezas utilizado en el nivel
+        self.piezas = [OR()]  # listado de piezas utilizado en el nivel
         self.posible_solucion = []
 
     def rellenar_huecos(self):
@@ -26,7 +27,6 @@ class Nivel:
 
     def comp(self, inputs):
         pass
-
 
 
 if __name__ == '__main__':

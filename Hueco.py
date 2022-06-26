@@ -37,6 +37,7 @@ class Hueco(pygame.sprite.Sprite):
     def comp(self, inputs):
         return self.Pieza.comp(inputs)
 
+
 if __name__ == '__main__':
     from AND import *
 

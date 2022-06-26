@@ -10,7 +10,7 @@ class AND(Pieza):
 
         self.image = pygame.image.load('FOTOS/AND.png')
         self.rect = self.image.get_rect()
-        self.pos = (self.cordenadas[3], self.cordenadas[6])
+        self.pos = (self.cordenadas[1], self.cordenadas[6])
         self.tamanyo = self.tamanyo
         self.entradas = 2
 

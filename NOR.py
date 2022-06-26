@@ -1,16 +1,16 @@
-from Hueco import *
+from Pieza import *
 import pygame
-from pygame.locals import *
 
 
 class NOR(Pieza):
+    pygame.init()
 
     def __init__(self, tamanyo=None, cordenadas=None):
         super().__init__(tamanyo, cordenadas)
 
         self.image = pygame.image.load('FOTOS/NOR.png')
         self.rect = self.image.get_rect()
-        self.pos = (self.cordenadas[1], self.cordenadas[6])
+        self.pos = (self.cordenadas[3], self.cordenadas[7])
         self.tamanyo = self.tamanyo
         self.entradas = 2
 

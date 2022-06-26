@@ -1,19 +1,18 @@
 from Pieza import *
 import pygame
-from pygame.locals import *
 
 
 class NAND(Pieza):
+    pygame.init()
 
     def __init__(self, tamanyo=None, cordenadas=None):
         super().__init__(tamanyo, cordenadas)
 
         self.image = pygame.image.load('FOTOS/NAND.png')
         self.rect = self.image.get_rect()
-        self.pos = (self.cordenadas[1], self.cordenadas[6])
+        self.pos = (self.cordenadas[1], self.cordenadas[7])
         self.tamanyo = self.tamanyo
         self.entradas = 2
-
 
     def comp(self, inputs):
         # Comportamineto de la Puerta logica

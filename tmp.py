@@ -8,6 +8,8 @@ from AND import *
 from NAND import *
 from OR import *
 from NOR import *
+from XOR import *
+from XNOR import *
 from Hueco import *
 
 pygame.init()
@@ -84,9 +86,17 @@ def main():
     P_NOR.rect.x = NOR().pos[0]
     P_NOR.rect.y = NOR().pos[1]
 
+    P_XOR = XOR()
+    P_XOR.rect.x = XOR().pos[0]
+    P_XOR.rect.y = XOR().pos[1]
+
+    P_XNOR = XNOR()
+    P_XNOR.rect.x = XNOR().pos[0]
+    P_XNOR.rect.y = XNOR().pos[1]
+
     lista_huecos.add(H1, H2, H3)
-    lista_puertas.add(P_AND, P_NAND, P_OR, P_NOR)
-    lista_todos_sprites.add(H1, H2, H3, P_AND, P_NAND, P_OR, P_NOR)
+    lista_puertas.add(P_AND, P_NAND, P_OR, P_NOR, P_XOR, P_XNOR)
+    lista_todos_sprites.add(H1, H2, H3, P_AND, P_NAND, P_OR, P_NOR, P_XOR, P_XNOR)
 
     while running:
 
@@ -96,6 +106,8 @@ def main():
 
         R_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON4.png"), pos=(375, 135),
                          text_input="R", font=get_font(30), base_color="#d7fcd4", hovering_color="White")
+
+        lista_solucion = []
 
         for button in [R_BUTTON]:
             button.changeColor(MOUSE_POS)
@@ -108,14 +120,28 @@ def main():
             elif event.type == MOUSEBUTTONDOWN:
 
                 if R_BUTTON.checkForInput(MOUSE_POS):
+
                     P_AND.rect.x = AND().pos[0]
                     P_AND.rect.y = AND().pos[1]
+
                     P_NAND.rect.x = NAND().pos[0]
                     P_NAND.rect.y = NAND().pos[1]
+
                     P_OR.rect.x = OR().pos[0]
                     P_OR.rect.y = OR().pos[1]
+
                     P_NOR.rect.x = NOR().pos[0]
                     P_NOR.rect.y = NOR().pos[1]
+
+                    P_XOR.rect.x = XOR().pos[0]
+                    P_XOR.rect.y = XOR().pos[1]
+
+                    P_XNOR.rect.x = XNOR().pos[0]
+                    P_XNOR.rect.y = XNOR().pos[1]
+
+                    lista_solucion = []
+
+                    print(lista_solucion)
 
                 for r in lista_puertas:
                     if r.rect.collidepoint(event.pos):
@@ -131,13 +157,13 @@ def main():
                     choque = pygame.sprite.spritecollideany(r, lista_huecos)
                     if choque:
                         r.rect.center = choque.rect.center
+                        lista_solucion.append(r)
+                        print(lista_solucion)
 
             elif event.type == MOUSEBUTTONUP:
                 moving = False
 
         # L'ordre en que fem les figures importa en quines estan en primera fila
-
-
 
         lista_todos_sprites.draw(SCREEN)
 
@@ -154,3 +180,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
