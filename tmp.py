@@ -3,6 +3,7 @@ import pygame
 from pygame.locals import *
 import os
 import sys
+from Button import *
 from AND import *
 from OR import *
 from Hueco import *
@@ -36,15 +37,18 @@ Blanco = (255, 255, 255)
 # P_OR = OR().image.get_rect()
 # P_OR.center = SCREEN_WIDTH * 0.5 // 3, SCREEN_HEIGHT * 4.5 // 5
 
-screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 fondo = pygame.image.load('FOTOS/FONDO1.jpg')
+
+
+def get_font(size):  # Returns Press-Start-2P in the desired size
+    return pygame.font.Font("FOTOS/font.ttf", size)
 
 
 def main():
 
     running = True
     moving = False
-    respuesta =[]
 
     lista_huecos = pygame.sprite.Group()
     lista_puertas = pygame.sprite.Group()
@@ -74,14 +78,30 @@ def main():
     lista_puertas.add(P_AND, P_OR)
     lista_todos_sprites.add(H1, H2, H3, P_AND, P_OR)
 
-
-
     while running:
+
+        MOUSE_POS = pygame.mouse.get_pos()
+
+        SCREEN.blit(fondo, (0, 0))
+
+        R_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON4.png"), pos=(375, 135),
+                         text_input="R", font=get_font(30), base_color="#d7fcd4", hovering_color="White")
+
+        for button in [R_BUTTON]:
+            button.changeColor(MOUSE_POS)
+            button.update(SCREEN)
+
         for event in pygame.event.get():
             if event.type == QUIT:
                 running = False
 
             elif event.type == MOUSEBUTTONDOWN:
+
+                if R_BUTTON.checkForInput(MOUSE_POS):
+                    P_AND.rect.x = AND().pos[0]
+                    P_AND.rect.y = AND().pos[1]
+                    P_OR.rect.x = OR().pos[0]
+                    P_OR.rect.y = OR().pos[1]
 
                 for r in lista_puertas:
                     if r.rect.collidepoint(event.pos):
@@ -94,16 +114,6 @@ def main():
                     if r.rect.collidepoint(event.pos):
                         r.rect.move_ip(event.rel)
 
-                # for r in lista_puertas:
-                #     r.update()
-
-                    # pos = pygame.mouse.get_pos()
-                    #
-                    # r.rect.x = pos[0]
-                    # r.rect.y = pos[1]
-
-                    # lista_huecos_llenos = pygame.sprite.groupcollide(lista_puertas, lista_huecos, False, True)
-
                     choque = pygame.sprite.spritecollideany(r, lista_huecos)
                     if choque:
                         r.rect.center = choque.rect.center
@@ -111,24 +121,19 @@ def main():
             elif event.type == MOUSEBUTTONUP:
                 moving = False
 
-            # elif Hueco.H1.hay_pieza() and Hueco.H2.hay_pieza() and Hueco.H3.hay_pieza():
-            #     if Hueco.H3.salida == 1:
-            #         resultado = 1
-            #     else:
-            #         resultado = 0
-
         # L'ordre en que fem les figures importa en quines estan en primera fila
-        screen.blit(fondo, (0, 0))
-        lista_todos_sprites.draw(screen)
-        # pygame.draw.rect(screen, Amarillo, Hueco1)
-        # pygame.draw.rect(screen, Rojo, Hueco2)
-        # pygame.draw.rect(screen, Amarillo, Hueco3)
-        #
-        # screen.blit(AND().image, P_AND)
 
-        # screen.blit(OR().image, P_OR)
-        # screen.blit(NOR().image, P_NOR)
-        # screen.blit(XOR().image, P_XOR)
+
+
+        lista_todos_sprites.draw(SCREEN)
+
+        # pygame.draw.rect(SCREEN, Amarillo, Hueco1)
+        # pygame.draw.rect(SCREEN, Rojo, Hueco2)
+        # pygame.draw.rect(SCREEN, Amarillo, Hueco3)
+        # SCREEN.blit(AND().image, P_AND)
+        # SCREEN.blit(OR().image, P_OR)
+        # SCREEN.blit(NOR().image, P_NOR)
+        # SCREEN.blit(XOR().image, P_XOR)
 
         pygame.display.update()
 

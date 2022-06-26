@@ -15,8 +15,6 @@ import pygame, sys, random
 from Button import *
 from Pieza import *
 
-
-
 pygame.init()
 
 SCREEN = pygame.display.set_mode((480, 640))
@@ -29,6 +27,7 @@ TOR = pygame.image.load('FOTOS/T.OR.PNG')
 TNOR = pygame.image.load('FOTOS/T.NOR.png')
 TXOR = pygame.image.load('FOTOS/T.XOR.PNG')
 TXNOR = pygame.image.load('FOTOS/T.XNOR.png')
+
 
 def get_font(size):  # Returns Press-Start-2P in the desired size
     return pygame.font.Font("FOTOS/font.ttf", size)
@@ -43,7 +42,7 @@ def TUTORIAL():
 
         TUTORIAL_TEXT = get_font(40).render("TUTORIAL", True, "#b68f40")
         TUTORIAL_RECT = TUTORIAL_TEXT.get_rect(center=(240, 100))
-        SCREEN.blit( TUTORIAL_TEXT, TUTORIAL_RECT)
+        SCREEN.blit(TUTORIAL_TEXT, TUTORIAL_RECT)
 
         AND_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON2.png"), pos=(150, 250),
                                  text_input="AND", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
@@ -59,7 +58,6 @@ def TUTORIAL():
                              text_input="XNOR", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
         QUIT_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON.png"), pos=(240, 550),
                              text_input="ATRAS", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
-
 
         for button in [AND_BUTTON, NAND_BUTTON, OR_BUTTON, NOR_BUTTON, XOR_BUTTON, XNOR_BUTTON, QUIT_BUTTON]:
             button.changeColor(TUTORIAL_MOUSE_POS)
