@@ -5,7 +5,9 @@ import os
 import sys
 from Button import *
 from AND import *
+from NAND import *
 from OR import *
+from NOR import *
 from Hueco import *
 
 pygame.init()
@@ -70,13 +72,21 @@ def main():
     P_AND.rect.x = AND().pos[0]
     P_AND.rect.y = AND().pos[1]
 
+    P_NAND = NAND()
+    P_NAND.rect.x = NAND().pos[0]
+    P_NAND.rect.y = NAND().pos[1]
+
     P_OR = OR()
     P_OR.rect.x = OR().pos[0]
     P_OR.rect.y = OR().pos[1]
 
+    P_NOR = NOR()
+    P_NOR.rect.x = NOR().pos[0]
+    P_NOR.rect.y = NOR().pos[1]
+
     lista_huecos.add(H1, H2, H3)
-    lista_puertas.add(P_AND, P_OR)
-    lista_todos_sprites.add(H1, H2, H3, P_AND, P_OR)
+    lista_puertas.add(P_AND, P_NAND, P_OR, P_NOR)
+    lista_todos_sprites.add(H1, H2, H3, P_AND, P_NAND, P_OR, P_NOR)
 
     while running:
 
@@ -100,8 +110,12 @@ def main():
                 if R_BUTTON.checkForInput(MOUSE_POS):
                     P_AND.rect.x = AND().pos[0]
                     P_AND.rect.y = AND().pos[1]
+                    P_NAND.rect.x = NAND().pos[0]
+                    P_NAND.rect.y = NAND().pos[1]
                     P_OR.rect.x = OR().pos[0]
                     P_OR.rect.y = OR().pos[1]
+                    P_NOR.rect.x = NOR().pos[0]
+                    P_NOR.rect.y = NOR().pos[1]
 
                 for r in lista_puertas:
                     if r.rect.collidepoint(event.pos):
