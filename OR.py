@@ -16,7 +16,7 @@ class OR(Pieza):
     def comp(self, inputs):
         # Comportamineto de la Puerta logica
         if len(inputs) != self.entradas:
-            raise LoQueSea
+            raise Exception("Faltan entradas")
         self.salida = inputs[0] or inputs[1]
         return self.salida
 
