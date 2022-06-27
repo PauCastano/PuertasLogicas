@@ -75,25 +75,49 @@ def main():
     P_AND.rect.x = AND().pos[0]
     P_AND.rect.y = AND().pos[1]
 
+    P_AND2 = AND()
+    P_AND2.rect.x = AND().pos[0]
+    P_AND2.rect.y = AND().pos[1]
+
     P_NAND = NAND()
     P_NAND.rect.x = NAND().pos[0]
     P_NAND.rect.y = NAND().pos[1]
+
+    P_NAND2 = NAND()
+    P_NAND2.rect.x = NAND().pos[0]
+    P_NAND2.rect.y = NAND().pos[1]
 
     P_OR = OR()
     P_OR.rect.x = OR().pos[0]
     P_OR.rect.y = OR().pos[1]
 
+    P_OR2 = OR()
+    P_OR2.rect.x = OR().pos[0]
+    P_OR2.rect.y = OR().pos[1]
+
     P_NOR = NOR()
     P_NOR.rect.x = NOR().pos[0]
     P_NOR.rect.y = NOR().pos[1]
+
+    P_NOR2 = OR()
+    P_NOR2.rect.x = OR().pos[0]
+    P_NOR2.rect.y = OR().pos[1]
 
     P_XOR = XOR()
     P_XOR.rect.x = XOR().pos[0]
     P_XOR.rect.y = XOR().pos[1]
 
+    P_XOR2 = XOR()
+    P_XOR2.rect.x = XOR().pos[0]
+    P_XOR2.rect.y = XOR().pos[1]
+
     P_XNOR = XNOR()
     P_XNOR.rect.x = XNOR().pos[0]
     P_XNOR.rect.y = XNOR().pos[1]
+
+    P_XNOR2 = XNOR()
+    P_XNOR2.rect.x = XNOR().pos[0]
+    P_XNOR2.rect.y = XNOR().pos[1]
 
     lista_huecos.add(H1, H2, H3)
     lista_puertas.add(P_AND, P_NAND, P_OR, P_NOR, P_XOR, P_XNOR)
@@ -127,26 +151,47 @@ def main():
             elif event.type == MOUSEBUTTONDOWN:
 
                 if R_BUTTON.checkForInput(MOUSE_POS):
+                    lista_puertas.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2)
+                    lista_todos_sprites.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2)
 
                     P_AND.rect.x = AND().pos[0]
                     P_AND.rect.y = AND().pos[1]
 
+                    P_AND2.rect.x = AND().pos[0]
+                    P_AND2.rect.y = AND().pos[1]
+
                     P_NAND.rect.x = NAND().pos[0]
                     P_NAND.rect.y = NAND().pos[1]
+
+                    P_NAND2.rect.x = NAND().pos[0]
+                    P_NAND2.rect.y = NAND().pos[1]
 
                     P_OR.rect.x = OR().pos[0]
                     P_OR.rect.y = OR().pos[1]
 
+                    P_OR2.rect.x = OR().pos[0]
+                    P_OR2.rect.y = OR().pos[1]
+
                     P_NOR.rect.x = NOR().pos[0]
                     P_NOR.rect.y = NOR().pos[1]
+
+                    P_NOR2.rect.x = NOR().pos[0]
+                    P_NOR2.rect.y = NOR().pos[1]
 
                     P_XOR.rect.x = XOR().pos[0]
                     P_XOR.rect.y = XOR().pos[1]
 
+                    P_XOR2.rect.x = XOR().pos[0]
+                    P_XOR2.rect.y = XOR().pos[1]
+
                     P_XNOR.rect.x = XNOR().pos[0]
                     P_XNOR.rect.y = XNOR().pos[1]
 
+                    P_XNOR2.rect.x = XNOR().pos[0]
+                    P_XNOR2.rect.y = XNOR().pos[1]
+
                     lista_solucion = []
+
 
                     print(lista_solucion)
 
@@ -166,6 +211,27 @@ def main():
                         r.rect.center = choque.rect.center
                         lista_solucion.append(r)
                         print(lista_solucion)
+                        if r == P_AND:
+                            lista_puertas.add(P_AND2)
+                            lista_todos_sprites.add(P_AND2)
+                        elif r == P_NAND:
+                            lista_puertas.add(P_NAND2)
+                            lista_todos_sprites.add(P_NAND2)
+                        elif r == P_OR:
+                            lista_puertas.add(P_OR2)
+                            lista_todos_sprites.add(P_OR2)
+                        elif r == P_NOR:
+                            lista_puertas.add(P_NOR2)
+                            lista_todos_sprites.add(P_NOR2)
+                        elif r == P_XOR:
+                            lista_puertas.add(P_XOR2)
+                            lista_todos_sprites.add(P_XOR2)
+                        elif r == P_XNOR:
+                            lista_puertas.add(P_XNOR2)
+                            lista_todos_sprites.add(P_XNOR2)
+
+
+
 
             elif event.type == MOUSEBUTTONUP:
                 moving = False
