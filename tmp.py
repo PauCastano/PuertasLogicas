@@ -175,19 +175,19 @@ def main():
         lista_todos_sprites.draw(SCREEN)
 
         input1 = get_font(15).render(in1, True, "#b68f40")
-        input1_RECT = input1.get_rect(center=(100, 380))
+        input1_RECT = input1.get_rect(center=(105, 390))
         SCREEN.blit(input1, input1_RECT)
 
         input2 = get_font(15).render(in2, True, "#b68f40")
-        input2_RECT = input2.get_rect(center=(130, 380))
+        input2_RECT = input2.get_rect(center=(130, 390))
         SCREEN.blit(input2, input2_RECT)
 
         input3 = get_font(15).render(in3, True, "#b68f40")
-        input3_RECT = input3.get_rect(center=(350, 380))
+        input3_RECT = input3.get_rect(center=(348, 390))
         SCREEN.blit(input3, input3_RECT)
 
         input4 = get_font(15).render(in4, True, "#b68f40")
-        input4_RECT = input4.get_rect(center=(375, 380))
+        input4_RECT = input4.get_rect(center=(370, 390))
         SCREEN.blit(input4, input4_RECT)
 
 
