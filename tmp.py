@@ -11,6 +11,7 @@ from NOR import *
 from XOR import *
 from XNOR import *
 from Hueco import *
+from Nivel import *
 
 pygame.init()
 
@@ -98,6 +99,12 @@ def main():
     lista_puertas.add(P_AND, P_NAND, P_OR, P_NOR, P_XOR, P_XNOR)
     lista_todos_sprites.add(H1, H2, H3, P_AND, P_NAND, P_OR, P_NOR, P_XOR, P_XNOR)
 
+    in1 = str(Nivel(4).input[0])
+    in2 = str(Nivel(4).input[1])
+    in3 = str(Nivel(4).input[2])
+    in4 = str(Nivel(4).input[3])
+    print(in1)
+
     while running:
 
         MOUSE_POS = pygame.mouse.get_pos()
@@ -166,6 +173,23 @@ def main():
         # L'ordre en que fem les figures importa en quines estan en primera fila
 
         lista_todos_sprites.draw(SCREEN)
+
+        input1 = get_font(15).render(in1, True, "#b68f40")
+        input1_RECT = input1.get_rect(center=(100, 380))
+        SCREEN.blit(input1, input1_RECT)
+
+        input2 = get_font(15).render(in2, True, "#b68f40")
+        input2_RECT = input2.get_rect(center=(130, 380))
+        SCREEN.blit(input2, input2_RECT)
+
+        input3 = get_font(15).render(in3, True, "#b68f40")
+        input3_RECT = input3.get_rect(center=(350, 380))
+        SCREEN.blit(input3, input3_RECT)
+
+        input4 = get_font(15).render(in4, True, "#b68f40")
+        input4_RECT = input4.get_rect(center=(375, 380))
+        SCREEN.blit(input4, input4_RECT)
+
 
         # pygame.draw.rect(SCREEN, Amarillo, Hueco1)
         # pygame.draw.rect(SCREEN, Rojo, Hueco2)
