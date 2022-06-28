@@ -22,10 +22,7 @@ class OR(Pieza):
         return self.salida
 
     def update(self):
-        mouse_pos = pygame.mouse.get_pos()
-
-        self.rect.x = mouse_pos[0]
-        self.rect.y = mouse_pos[1]
+        pass
 
 
 if __name__ == '__main__':

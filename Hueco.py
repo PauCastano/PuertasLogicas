@@ -15,7 +15,7 @@ class Hueco(pygame.sprite.Sprite):
         self.salida = None
         self.Pieza = None
 
-        self.image = pygame.image.load('FOTOS/Hueco.PNG').convert()
+        self.image = pygame.image.load('FOTOS/Hueco.PNG')
         self.rect = self.image.get_rect()
 
     def hay_pieza(self):
@@ -41,7 +41,7 @@ class Hueco(pygame.sprite.Sprite):
 if __name__ == '__main__':
     from AND import *
 
-    H1 = Hueco([], [])
+    H1 = Hueco()
     H1.meter(AND())
-    print(H1.comp([0, 1]))
+    print(H1.comp([1, 1]))
 

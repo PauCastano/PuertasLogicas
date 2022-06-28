@@ -99,9 +99,9 @@ def main():
     P_NOR.rect.x = NOR().pos[0]
     P_NOR.rect.y = NOR().pos[1]
 
-    P_NOR2 = OR()
-    P_NOR2.rect.x = OR().pos[0]
-    P_NOR2.rect.y = OR().pos[1]
+    P_NOR2 = NOR()
+    P_NOR2.rect.x = NOR().pos[0]
+    P_NOR2.rect.y = NOR().pos[1]
 
     P_XOR = XOR()
     P_XOR.rect.x = XOR().pos[0]
@@ -120,14 +120,16 @@ def main():
     P_XNOR2.rect.y = XNOR().pos[1]
 
     lista_huecos.add(H1, H2, H3)
-    lista_puertas.add(P_AND, P_NAND, P_OR, P_NOR, P_XOR, P_XNOR)
-    lista_todos_sprites.add(H1, H2, H3, P_AND, P_NAND, P_OR, P_NOR, P_XOR, P_XNOR)
+    lista_puertas.add(P_NAND, P_AND, P_OR, P_NOR, P_XOR, P_XNOR)
+    lista_todos_sprites.add(H1, H2, H3, P_AND, P_NAND, P_OR, P_XOR, P_XNOR, P_NOR)
 
-    in1 = str(Nivel(4).input[0])
-    in2 = str(Nivel(4).input[1])
-    in3 = str(Nivel(4).input[2])
-    in4 = str(Nivel(4).input[3])
-    print(in1)
+    nivel = Nivel(4)
+
+    in1 = str(nivel.input[0])
+    in2 = str(nivel.input[1])
+    in3 = str(nivel.input[2])
+    in4 = str(nivel.input[3])
+    print(in1, in2, in3, in4)
 
     while running:
 
@@ -135,10 +137,10 @@ def main():
 
         SCREEN.blit(fondo, (0, 0))
 
+        lista_solucion = []
+
         R_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON4.png"), pos=(375, 135),
                          text_input="R", font=get_font(30), base_color="#d7fcd4", hovering_color="White")
-
-        lista_solucion = []
 
         for button in [R_BUTTON]:
             button.changeColor(MOUSE_POS)
@@ -151,6 +153,7 @@ def main():
             elif event.type == MOUSEBUTTONDOWN:
 
                 if R_BUTTON.checkForInput(MOUSE_POS):
+
                     lista_puertas.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2)
                     lista_todos_sprites.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2)
 
@@ -192,7 +195,6 @@ def main():
 
                     lista_solucion = []
 
-
                     print(lista_solucion)
 
                 for r in lista_puertas:
@@ -202,15 +204,19 @@ def main():
             elif event.type == MOUSEMOTION and moving:
 
                 for r in lista_puertas:
-
                     if r.rect.collidepoint(event.pos):
                         r.rect.move_ip(event.rel)
 
+            elif event.type == MOUSEBUTTONUP:
+
+                for r in lista_puertas:
                     choque = pygame.sprite.spritecollideany(r, lista_huecos)
                     if choque:
                         r.rect.center = choque.rect.center
                         lista_solucion.append(r)
+
                         print(lista_solucion)
+
                         if r == P_AND:
                             lista_puertas.add(P_AND2)
                             lista_todos_sprites.add(P_AND2)
@@ -230,10 +236,6 @@ def main():
                             lista_puertas.add(P_XNOR2)
                             lista_todos_sprites.add(P_XNOR2)
 
-
-
-
-            elif event.type == MOUSEBUTTONUP:
                 moving = False
 
         # L'ordre en que fem les figures importa en quines estan en primera fila
