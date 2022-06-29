@@ -124,14 +124,16 @@ def main():
     lista_todos_sprites.add(H1, H2, H3, P_AND, P_NAND, P_OR, P_XOR, P_XNOR, P_NOR)
 
     nivel = Nivel(4)
-
+    nivel.comp()
+    list_soluciones = nivel.posible_solucion
+    print('solciones_nievl:', list_soluciones)
 
     in1 = str(nivel.input[0])
     in2 = str(nivel.input[1])
     in3 = str(nivel.input[2])
     in4 = str(nivel.input[3])
-    print(in1, in2, in3, in4)
 
+    num_puertas_colocadas = 0
     while running:
 
         MOUSE_POS = pygame.mouse.get_pos()
@@ -196,7 +198,7 @@ def main():
 
                     lista_solucion = []
 
-                    print(lista_solucion)
+
 
                 for r in lista_puertas:
                     if r.rect.collidepoint(event.pos):
@@ -214,7 +216,6 @@ def main():
                     choque = pygame.sprite.spritecollideany(r, lista_huecos)
                     if choque:
                         r.rect.center = choque.rect.center
-
                         if choque == H1:
                             lista_solucion[0] = r
 
@@ -224,7 +225,7 @@ def main():
                         else:
                             lista_solucion[2] = r
 
-                        print(lista_solucion)
+
 
                         if r == P_AND:
                             lista_puertas.add(P_AND2)
@@ -247,6 +248,16 @@ def main():
 
                 moving = False
 
+
+        if lista_solucion[0] != 0 and lista_solucion[1] != 0 and lista_solucion[2] != 0:
+            count = 0
+            for contar, puertasz in enumerate(list_soluciones):
+                if count < len(list_soluciones) and list_soluciones[count:count+3] == lista_solucion:
+                    print('FELICIDADES')
+                    count += 3
+                else:
+                    print('VUELVELO A INTENTAR')
+
         # L'ordre en que fem les figures importa en quines estan en primera fila
 
         lista_todos_sprites.draw(SCREEN)
@@ -267,18 +278,8 @@ def main():
         input4_RECT = input4.get_rect(center=(370, 390))
         SCREEN.blit(input4, input4_RECT)
 
-
-        # pygame.draw.rect(SCREEN, Amarillo, Hueco1)
-        # pygame.draw.rect(SCREEN, Rojo, Hueco2)
-        # pygame.draw.rect(SCREEN, Amarillo, Hueco3)
-        # SCREEN.blit(AND().image, P_AND)
-        # SCREEN.blit(OR().image, P_OR)
-        # SCREEN.blit(NOR().image, P_NOR)
-        # SCREEN.blit(XOR().image, P_XOR)
-
         pygame.display.update()
 
 
 if __name__ == "__main__":
     main()
-

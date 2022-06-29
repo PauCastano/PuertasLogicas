@@ -40,6 +40,7 @@ class Nivel:
         H3.rect.y = 240
         perm_puertas = list(itertools.product(self.piezas, repeat = 3)) #tupla
         comb_puertas = [] #lista con todas las permutaciones posibles
+
         for q in range(len(perm_puertas)):
             comb_puertas.append(perm_puertas[q][0])
             comb_puertas.append(perm_puertas[q][1])
