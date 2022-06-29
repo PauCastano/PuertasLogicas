@@ -3,9 +3,14 @@ import pygame
 from pygame.locals import *
 import os
 import sys
+from NAND import *
 from OR import *
-from AND import *
+from NOR import *
+from XOR import *
+from XNOR import *
 from Hueco import *
+from AND import *
+import itertools
 
 class Nivel:
     pygame.init()
@@ -16,7 +21,7 @@ class Nivel:
                                range(n_input)]  # devuelve una lista de 5 valores entre 0 y 1,
         self.output = 1
         self.n_hueco = n_input - 1
-        self.piezas = [OR(), AND()]  # listado de piezas utilizado en el nivel
+        self.piezas = [OR(), AND(), NOR(), NAND(), XOR(), XNOR()]  # listado de piezas utilizado en el nivel
         self.posible_solucion = []
 
 
@@ -33,25 +38,37 @@ class Nivel:
         H3 = Hueco()
         H3.rect.x = 330
         H3.rect.y = 240
+        perm_puertas = list(itertools.product(self.piezas, repeat = 3)) #tupla
+        comb_puertas = [] #lista con todas las permutaciones posibles
+        for q in range(len(perm_puertas)):
+            comb_puertas.append(perm_puertas[q][0])
+            comb_puertas.append(perm_puertas[q][1])
+            comb_puertas.append(perm_puertas[q][2])
 
-        pieza1 = random.choice(self.piezas)
-        pieza2 = random.choice(self.piezas)
-        pieza3 = random.choice(self.piezas)
 
-        H1.meter(pieza1)
-        H2.meter(pieza2)
-        H3.meter(pieza3)
+        k = 0
+        for count, puertax in enumerate(comb_puertas):
+            if k < len(comb_puertas):
 
-        resultado_intermedio = []
-        resultado_intermedio.append(H2.comp(self.input[:2]))
-        resultado_intermedio.append(H3.comp(self.input[2:4]))
-        print('RESULTADO FINAL:', H1.comp(resultado_intermedio) )
-        if H1.comp(resultado_intermedio) == 1:
-            self.posible_solucion.extend((pieza2, pieza3, pieza1))
-        print('soluciones', self.posible_solucion)
+                pieza1 = comb_puertas[k]
+                pieza2 = comb_puertas[k+1]
+                pieza3 = comb_puertas[k+2]
 
-    def comp123(self, inputs):
-        pass
+                H1.meter(pieza1)
+                H2.meter(pieza2)
+                H3.meter(pieza3)
+
+                resultado_intermedio = []
+                resultado_intermedio.append(H2.comp(self.input[:2]))
+                resultado_intermedio.append(H3.comp(self.input[2:4]))
+
+                if H1.comp(resultado_intermedio) == 1:
+                    self.posible_solucion.extend((pieza2, pieza3, pieza1))
+
+                H1.sacar(pieza1)
+                H2.sacar(pieza2)
+                H3.sacar(pieza3)
+                k += 3
 
 
 if __name__ == '__main__':
@@ -59,7 +76,6 @@ if __name__ == '__main__':
     n.comp()
     print('Entradas:', n.input)
     print('Salida querida:', n.output)
-    print('Resultado:')
-    print(n.posible_solucion)
+    print('Resultado:', n.posible_solucion)
 
 
