@@ -14,11 +14,11 @@ class XOR(Pieza):
         self.tamanyo = self.tamanyo
         self.entradas = 2
 
-    def comp(self,inputs):
+    def comp(self, inputs):
         # Comportamineto de la Puerta logica
         if len(inputs) != self.entradas:
             raise Exception("Faltan entradas")
-        self.salida = inputs[0]^inputs[1]
+        self.salida = inputs[0] ^ inputs[1]
         return self.salida
 
 

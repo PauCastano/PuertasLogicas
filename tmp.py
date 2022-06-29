@@ -15,7 +15,6 @@ from Nivel import *
 
 pygame.init()
 
-
 SCREEN_WIDTH = 480
 SCREEN_HEIGHT = 640
 IMG_DIR = "FOTOS"
@@ -58,6 +57,7 @@ def main():
     lista_huecos = pygame.sprite.Group()
     lista_puertas = pygame.sprite.Group()
     lista_todos_sprites = pygame.sprite.Group()
+    grupo_solucion = pygame.sprite.Group()
 
     H1 = Hueco()
     H1.rect.x = 210
@@ -125,6 +125,7 @@ def main():
 
     nivel = Nivel(4)
 
+
     in1 = str(nivel.input[0])
     in2 = str(nivel.input[1])
     in3 = str(nivel.input[2])
@@ -137,7 +138,7 @@ def main():
 
         SCREEN.blit(fondo, (0, 0))
 
-        lista_solucion = []
+        lista_solucion = [0, 0, 0]
 
         R_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON4.png"), pos=(375, 135),
                          text_input="R", font=get_font(30), base_color="#d7fcd4", hovering_color="White")
@@ -213,7 +214,15 @@ def main():
                     choque = pygame.sprite.spritecollideany(r, lista_huecos)
                     if choque:
                         r.rect.center = choque.rect.center
-                        lista_solucion.append(r)
+
+                        if choque == H1:
+                            lista_solucion[0] = r
+
+                        elif choque == H2:
+                            lista_solucion[1] = r
+
+                        else:
+                            lista_solucion[2] = r
 
                         print(lista_solucion)
 
