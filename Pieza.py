@@ -2,6 +2,7 @@ import random
 import pygame
 
 
+
 class Pieza(pygame.sprite.Sprite):
     # Definicion del comportamiento de las piezas en general
     def __init__(self, tamanyo=None, cordenadas=None):
@@ -17,3 +18,9 @@ class Pieza(pygame.sprite.Sprite):
 
     def update(self):
         pass
+
+    def __eq__(self, other):
+        return type(self) == type(other)
+
+    def __hash__(self):
+        return id(self)

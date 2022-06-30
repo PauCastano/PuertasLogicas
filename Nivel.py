@@ -12,6 +12,7 @@ from Hueco import *
 from AND import *
 import itertools
 
+
 class Nivel:
     pygame.init()
 
@@ -23,7 +24,6 @@ class Nivel:
         self.n_hueco = n_input - 1
         self.piezas = [OR(), AND(), NOR(), NAND(), XOR(), XNOR()]  # listado de piezas utilizado en el nivel
         self.posible_solucion = []
-
 
     def comp(self):
 #Poner piezas aleatorias para cada hueco
@@ -45,7 +45,6 @@ class Nivel:
             comb_puertas.append(perm_puertas[q][0])
             comb_puertas.append(perm_puertas[q][1])
             comb_puertas.append(perm_puertas[q][2])
-
 
         k = 0
         for count, puertax in enumerate(comb_puertas):

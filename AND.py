@@ -21,8 +21,7 @@ class AND(Pieza):
         self.salida = inputs[0] and inputs[1]
         return self.salida
 
-    def update(self):
-        pass
+
 
 
 if __name__ == '__main__':

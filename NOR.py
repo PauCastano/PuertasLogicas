@@ -21,6 +21,8 @@ class NOR(Pieza):
         self.salida = not (inputs[0] or inputs[1])
         return self.salida
 
+
+
 if __name__ == '__main__':
     n = NOR()
     n.comp()
