@@ -13,6 +13,10 @@ class Pieza(pygame.sprite.Sprite):
         self.salida = None
         self.entradas = None
 
+    def __eq__(self, other):
+        if isinstance(other, Pieza):
+            return self == other
+
     def comp(self, inputs):
         pass
 

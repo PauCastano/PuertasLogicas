@@ -311,9 +311,10 @@ def main():
                 if count < len(list_soluciones):
                     if list_soluciones[count:count + 3] == lista_solucion:
                         print('FELICIDADES')
+                        break
                     else:
                         count += 3
-                        print('VUELVELO A INTENTAR')
+            print('VUELVELO A INTENTAR')
 
         # L'ordre en que fem les figures importa en quines estan en primera fila
 
