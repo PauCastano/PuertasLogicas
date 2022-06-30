@@ -79,6 +79,10 @@ def main():
     P_AND2.rect.x = AND().pos[0]
     P_AND2.rect.y = AND().pos[1]
 
+    P_AND3 = AND()
+    P_AND3.rect.x = AND().pos[0]
+    P_AND3.rect.y = AND().pos[1]
+
     P_NAND = NAND()
     P_NAND.rect.x = NAND().pos[0]
     P_NAND.rect.y = NAND().pos[1]
@@ -86,6 +90,10 @@ def main():
     P_NAND2 = NAND()
     P_NAND2.rect.x = NAND().pos[0]
     P_NAND2.rect.y = NAND().pos[1]
+
+    P_NAND3 = AND()
+    P_NAND3.rect.x = NAND().pos[0]
+    P_NAND3.rect.y = NAND().pos[1]
 
     P_OR = OR()
     P_OR.rect.x = OR().pos[0]
@@ -95,6 +103,10 @@ def main():
     P_OR2.rect.x = OR().pos[0]
     P_OR2.rect.y = OR().pos[1]
 
+    P_OR3 = OR()
+    P_OR3.rect.x = OR().pos[0]
+    P_OR3.rect.y = OR().pos[1]
+
     P_NOR = NOR()
     P_NOR.rect.x = NOR().pos[0]
     P_NOR.rect.y = NOR().pos[1]
@@ -102,6 +114,10 @@ def main():
     P_NOR2 = NOR()
     P_NOR2.rect.x = NOR().pos[0]
     P_NOR2.rect.y = NOR().pos[1]
+
+    P_NOR3 = NOR()
+    P_NOR3.rect.x = NOR().pos[0]
+    P_NOR3.rect.y = NOR().pos[1]
 
     P_XOR = XOR()
     P_XOR.rect.x = XOR().pos[0]
@@ -111,6 +127,10 @@ def main():
     P_XOR2.rect.x = XOR().pos[0]
     P_XOR2.rect.y = XOR().pos[1]
 
+    P_XOR3 = XOR()
+    P_XOR3.rect.x = XOR().pos[0]
+    P_XOR3.rect.y = XOR().pos[1]
+
     P_XNOR = XNOR()
     P_XNOR.rect.x = XNOR().pos[0]
     P_XNOR.rect.y = XNOR().pos[1]
@@ -118,6 +138,10 @@ def main():
     P_XNOR2 = XNOR()
     P_XNOR2.rect.x = XNOR().pos[0]
     P_XNOR2.rect.y = XNOR().pos[1]
+
+    P_XNOR3 = XNOR()
+    P_XNOR3.rect.x = XNOR().pos[0]
+    P_XNOR3.rect.y = XNOR().pos[1]
 
     lista_huecos.add(H1, H2, H3)
     lista_puertas.add(P_NAND, P_AND, P_OR, P_NOR, P_XOR, P_XNOR)
@@ -157,8 +181,8 @@ def main():
 
                 if R_BUTTON.checkForInput(MOUSE_POS):
 
-                    lista_puertas.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2)
-                    lista_todos_sprites.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2)
+                    lista_puertas.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2, P_AND3, P_NAND3, P_OR3, P_NOR3, P_XOR3, P_XNOR3)
+                    lista_todos_sprites.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2, P_AND3, P_NAND3, P_OR3, P_NOR3, P_XOR3, P_XNOR3)
 
                     P_AND.rect.x = AND().pos[0]
                     P_AND.rect.y = AND().pos[1]
@@ -166,11 +190,17 @@ def main():
                     P_AND2.rect.x = AND().pos[0]
                     P_AND2.rect.y = AND().pos[1]
 
+                    P_AND3.rect.x = AND().pos[0]
+                    P_AND3.rect.y = AND().pos[1]
+
                     P_NAND.rect.x = NAND().pos[0]
                     P_NAND.rect.y = NAND().pos[1]
 
                     P_NAND2.rect.x = NAND().pos[0]
                     P_NAND2.rect.y = NAND().pos[1]
+
+                    P_NAND3.rect.x = NAND().pos[0]
+                    P_NAND3.rect.y = NAND().pos[1]
 
                     P_OR.rect.x = OR().pos[0]
                     P_OR.rect.y = OR().pos[1]
@@ -178,11 +208,17 @@ def main():
                     P_OR2.rect.x = OR().pos[0]
                     P_OR2.rect.y = OR().pos[1]
 
+                    P_OR3.rect.x = OR().pos[0]
+                    P_OR3.rect.y = OR().pos[1]
+
                     P_NOR.rect.x = NOR().pos[0]
                     P_NOR.rect.y = NOR().pos[1]
 
                     P_NOR2.rect.x = NOR().pos[0]
                     P_NOR2.rect.y = NOR().pos[1]
+
+                    P_NOR3.rect.x = NOR().pos[0]
+                    P_NOR3.rect.y = NOR().pos[1]
 
                     P_XOR.rect.x = XOR().pos[0]
                     P_XOR.rect.y = XOR().pos[1]
@@ -190,13 +226,19 @@ def main():
                     P_XOR2.rect.x = XOR().pos[0]
                     P_XOR2.rect.y = XOR().pos[1]
 
+                    P_XOR3.rect.x = XOR().pos[0]
+                    P_XOR3.rect.y = XOR().pos[1]
+
                     P_XNOR.rect.x = XNOR().pos[0]
                     P_XNOR.rect.y = XNOR().pos[1]
 
                     P_XNOR2.rect.x = XNOR().pos[0]
                     P_XNOR2.rect.y = XNOR().pos[1]
 
-                    lista_solucion = []
+                    P_XNOR3.rect.x = XNOR().pos[0]
+                    P_XNOR3.rect.y = XNOR().pos[1]
+
+                    lista_solucion = [0,0,0]
 
 
 
@@ -245,18 +287,36 @@ def main():
                         elif r == P_XNOR:
                             lista_puertas.add(P_XNOR2)
                             lista_todos_sprites.add(P_XNOR2)
+                        elif r == P_AND2:
+                            lista_puertas.add(P_AND3)
+                            lista_todos_sprites.add(P_AND3)
+                        elif r == P_NAND2:
+                            lista_puertas.add(P_NAND3)
+                            lista_todos_sprites.add(P_NAND3)
+                        elif r == P_OR2:
+                            lista_puertas.add(P_OR3)
+                            lista_todos_sprites.add(P_OR3)
+                        elif r == P_NOR2:
+                            lista_puertas.add(P_NOR3)
+                            lista_todos_sprites.add(P_NOR3)
+                        elif r == P_XOR2:
+                            lista_puertas.add(P_XOR3)
+                            lista_todos_sprites.add(P_XOR3)
+                        elif r == P_XNOR2:
+                            lista_puertas.add(P_XNOR3)
+                            lista_todos_sprites.add(P_XNOR3)
 
                 moving = False
 
 
-        if lista_solucion[0] != 0 and lista_solucion[1] != 0 and lista_solucion[2] != 0:
-            count = 0
-            for contar, puertasz in enumerate(list_soluciones):
-                if count < len(list_soluciones) and list_soluciones[count:count+3] == lista_solucion:
-                    print('FELICIDADES')
-                    count += 3
-                else:
-                    print('VUELVELO A INTENTAR')
+        #if lista_solucion[0] != 0 and lista_solucion[1] != 0 and lista_solucion[2] != 0:
+         #   count = 0
+          #  for contar, puertasz in enumerate(list_soluciones):
+           #     if count < len(list_soluciones) and list_soluciones[count:count+3] == lista_solucion:
+            #        print('FELICIDADES')
+             #       count += 3
+              #  else:
+               #     print('VUELVELO A INTENTAR')
 
         # L'ordre en que fem les figures importa en quines estan en primera fila
 

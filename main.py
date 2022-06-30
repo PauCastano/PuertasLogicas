@@ -14,7 +14,7 @@
 import pygame, sys, random
 from Button import *
 from Pieza import *
-
+from tmp import *
 pygame.init()
 
 SCREEN = pygame.display.set_mode((480, 640))
