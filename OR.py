@@ -22,12 +22,10 @@ class OR(Pieza):
         return self.salida
 
 
-
-
 if __name__ == '__main__':
     n = OR()
     print(n.pos)
     print(n.tamanyo)
 
-    n.comp([0, 1])
+    n.comp([1, 0])
     print(n.salida)

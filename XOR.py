@@ -24,7 +24,8 @@ class XOR(Pieza):
 
 if __name__ == '__main__':
     n = XOR()
-    n.comp()
-    print(n.a)
-    print(n.b)
+    print(n.pos)
+    print(n.tamanyo)
+
+    n.comp([0, 0])
     print(n.salida)

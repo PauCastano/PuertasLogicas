@@ -19,12 +19,14 @@ class NAND(Pieza):
         if len(inputs) != self.entradas:
             raise Exception("Faltan entradas")
         self.salida = not (inputs[0] and inputs[1])
+        self.salida = int(self.salida)
         return self.salida
 
 
 if __name__ == '__main__':
     n = NAND()
-    n.comp()
-    print(n.a)
-    print(n.b)
+    print(n.pos)
+    print(n.tamanyo)
+
+    n.comp([0, 1])
     print(n.salida)

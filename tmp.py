@@ -164,7 +164,6 @@ def main():
 
         lista_solucion = [0, 0, 0]
 
-
         R_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON4.png"), pos=(375, 135),
                           text_input="R", font=get_font(30), base_color="#d7fcd4", hovering_color="White")
 
@@ -240,6 +239,7 @@ def main():
 
                     lista_solucion = [0, 0, 0]
                     print(lista_puertas)
+
                 for r in lista_puertas:
                     if r.rect.collidepoint(event.pos):
                         moving = True
@@ -265,42 +265,42 @@ def main():
                         else:
                             lista_solucion[2] = r
 
-                        # if r == P_AND:
-                        #     lista_puertas.add(P_AND2)
-                        #     lista_todos_sprites.add(P_AND2)
-                        # elif r == P_NAND:
-                        #     lista_puertas.add(P_NAND2)
-                        #     lista_todos_sprites.add(P_NAND2)
-                        # elif r == P_OR:
-                        #     lista_puertas.add(P_OR2)
-                        #     lista_todos_sprites.add(P_OR2)
-                        # elif r == P_NOR:
-                        #     lista_puertas.add(P_NOR2)
-                        #     lista_todos_sprites.add(P_NOR2)
-                        # elif r == P_XOR:
-                        #     lista_puertas.add(P_XOR2)
-                        #     lista_todos_sprites.add(P_XOR2)
-                        # elif r == P_XNOR:
-                        #     lista_puertas.add(P_XNOR2)
-                        #     lista_todos_sprites.add(P_XNOR2)
-                        # elif r == P_AND2:
-                        #     lista_puertas.add(P_AND3)
-                        #     lista_todos_sprites.add(P_AND3)
-                        # elif r == P_NAND2:
-                        #     lista_puertas.add(P_NAND3)
-                        #     lista_todos_sprites.add(P_NAND3)
-                        # elif r == P_OR2:
-                        #     lista_puertas.add(P_OR3)
-                        #     lista_todos_sprites.add(P_OR3)
-                        # elif r == P_NOR2:
-                        #     lista_puertas.add(P_NOR3)
-                        #     lista_todos_sprites.add(P_NOR3)
-                        # elif r == P_XOR2:
-                        #     lista_puertas.add(P_XOR3)
-                        #     lista_todos_sprites.add(P_XOR3)
-                        # elif r == P_XNOR2:
-                        #     lista_puertas.add(P_XNOR3)
-                        #     lista_todos_sprites.add(P_XNOR3)
+                        if r == P_AND:
+                            lista_puertas.add(P_AND2)
+                            lista_todos_sprites.add(P_AND2)
+                        elif r == P_NAND:
+                            lista_puertas.add(P_NAND2)
+                            lista_todos_sprites.add(P_NAND2)
+                        elif r == P_OR:
+                            lista_puertas.add(P_OR2)
+                            lista_todos_sprites.add(P_OR2)
+                        elif r == P_NOR:
+                            lista_puertas.add(P_NOR2)
+                            lista_todos_sprites.add(P_NOR2)
+                        elif r == P_XOR:
+                            lista_puertas.add(P_XOR2)
+                            lista_todos_sprites.add(P_XOR2)
+                        elif r == P_XNOR:
+                            lista_puertas.add(P_XNOR2)
+                            lista_todos_sprites.add(P_XNOR2)
+                        elif r == P_AND2:
+                            lista_puertas.add(P_AND3)
+                            lista_todos_sprites.add(P_AND3)
+                        elif r == P_NAND2:
+                            lista_puertas.add(P_NAND3)
+                            lista_todos_sprites.add(P_NAND3)
+                        elif r == P_OR2:
+                            lista_puertas.add(P_OR3)
+                            lista_todos_sprites.add(P_OR3)
+                        elif r == P_NOR2:
+                            lista_puertas.add(P_NOR3)
+                            lista_todos_sprites.add(P_NOR3)
+                        elif r == P_XOR2:
+                            lista_puertas.add(P_XOR3)
+                            lista_todos_sprites.add(P_XOR3)
+                        elif r == P_XNOR2:
+                            lista_puertas.add(P_XNOR3)
+                            lista_todos_sprites.add(P_XNOR3)
 
                 moving = False
 
@@ -309,12 +309,13 @@ def main():
 
             for contar, puertasz in enumerate(list_soluciones):
                 if count < len(list_soluciones):
+                    print(list_soluciones[count:count + 3])
                     if list_soluciones[count:count + 3] == lista_solucion:
                         print('FELICIDADES')
                         break
                     else:
                         count += 3
-            print('VUELVELO A INTENTAR')
+            # print('VUELVELO A INTENTAR')
 
         # L'ordre en que fem les figures importa en quines estan en primera fila
 
