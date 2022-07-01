@@ -165,6 +165,7 @@ def PLAY():
         if res == 1:
             F_BUTTON.changeColor(MOUSE_POS)
             F_BUTTON.update(SCREEN)
+
         for button in [R_BUTTON, QUIT_BUTTON]:
             button.changeColor(MOUSE_POS)
             button.update(SCREEN)
@@ -310,10 +311,10 @@ def PLAY():
 
             for contar, puertasz in enumerate(list_soluciones):
                 if count < len(list_soluciones):
-                    #print(list_soluciones[count:count + 3])
+                    print(list_soluciones[count:count + 3])
                     if list_soluciones[count:count + 3] == lista_solucion:
                         res = 1
-                        print(res)
+                        print('Felicidades')
                         pygame.display.update()
                         break
                     else:
@@ -337,6 +338,10 @@ def PLAY():
         input4 = get_font(15).render(in4, True, "#b68f40")
         input4_RECT = input4.get_rect(center=(370, 390))
         SCREEN.blit(input4, input4_RECT)
+
+        out = get_font(15).render('1', True, "#b68f40")
+        out_RECT = out.get_rect(center=(239, 45))
+        SCREEN.blit(out, out_RECT)
 
         pygame.display.update()
 
