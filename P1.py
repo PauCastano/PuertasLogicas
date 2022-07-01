@@ -18,6 +18,28 @@ pygame.init()
 SCREEN_WIDTH = 480
 SCREEN_HEIGHT = 640
 IMG_DIR = "FOTOS"
+Amarillo = (255, 255, 0)
+Rojo = (255, 0, 0)
+Blanco = (255, 255, 255)
+
+# P_AND = AND().image.get_rect()
+# P_AND.center = AND().pos
+
+# P_OR = OR().image.get_rect()
+# P_OR.center = OR().pos
+
+# Hueco1 = pygame.Rect((210, 75), (58, 120))
+# Hueco2 = pygame.Rect((90, 240), (58, 120))
+# Hueco3 = pygame.Rect((330, 240), (58, 120))
+# H1 = Hueco((210, 75), (58, 120))
+# Hueco1 = pygame.Rect(H1.cordenadas, H1.tamanyo)
+# H2 = Hueco((90, 240), (58, 120))
+# Hueco2 = pygame.Rect(H2.cordenadas, H2.tamanyo)
+# H3 = Hueco((330, 240), (58, 120))
+# Hueco3 = pygame.Rect(H3.cordenadas, H3.tamanyo)
+
+# P_OR = OR().image.get_rect()
+# P_OR.center = SCREEN_WIDTH * 0.5 // 3, SCREEN_HEIGHT * 4.5 // 5
 
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 fondo = pygame.image.load('FOTOS/FONDO1.jpg')
@@ -27,13 +49,14 @@ def get_font(size):  # Returns Press-Start-2P in the desired size
     return pygame.font.Font("FOTOS/font.ttf", size)
 
 
-def play():
+def main():
     running = True
     moving = False
 
     lista_huecos = pygame.sprite.Group()
     lista_puertas = pygame.sprite.Group()
     lista_todos_sprites = pygame.sprite.Group()
+    grupo_solucion = pygame.sprite.Group()
 
     H1 = Hueco()
     H1.rect.x = 210
@@ -144,8 +167,6 @@ def play():
         R_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON4.png"), pos=(375, 135),
                           text_input="R", font=get_font(30), base_color="#d7fcd4", hovering_color="White")
 
-
-
         for button in [R_BUTTON]:
             button.changeColor(MOUSE_POS)
             button.update(SCREEN)
@@ -218,7 +239,6 @@ def play():
 
                     lista_solucion = [0, 0, 0]
                     print(lista_puertas)
-
                 for r in lista_puertas:
                     if r.rect.collidepoint(event.pos):
                         moving = True
@@ -262,7 +282,7 @@ def play():
                         elif r == P_XNOR:
                             lista_puertas.add(P_XNOR2)
                             lista_todos_sprites.add(P_XNOR2)
-                        elif r == P_AND2:
+                        if r == P_AND2:
                             lista_puertas.add(P_AND3)
                             lista_todos_sprites.add(P_AND3)
                         elif r == P_NAND2:
@@ -283,18 +303,15 @@ def play():
 
                 moving = False
 
-        '''if lista_solucion[0] != 0 and lista_solucion[1] != 0 and lista_solucion[2] != 0:
+        if lista_solucion[0] != 0 and lista_solucion[1] != 0 and lista_solucion[2] != 0:
             count = 0
-
             for contar, puertasz in enumerate(list_soluciones):
                 if count < len(list_soluciones):
-                    print(list_soluciones[count:count + 3])
                     if list_soluciones[count:count + 3] == lista_solucion:
                         print('FELICIDADES')
-                        break
                     else:
                         count += 3
-            # print('VUELVELO A INTENTAR')'''
+                        #print('VUELVELO A INTENTAR')
 
         # L'ordre en que fem les figures importa en quines estan en primera fila
 
@@ -320,4 +337,4 @@ def play():
 
 
 if __name__ == "__main__":
-    play()
+    main()

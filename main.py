@@ -36,8 +36,46 @@ TXNOR = pygame.image.load('FOTOS/T.XNOR.png')
 def get_font(size):  # Returns Press-Start-2P in the desired size
     return pygame.font.Font("FOTOS/font.ttf", size)
 
-
 def PLAY():
+    while True:
+        SCREEN.blit(BG, (0, 0))
+
+        MENU_MOUSE_POS = pygame.mouse.get_pos()
+
+        MENU_TEXT = get_font(40).render("PLAY", True, "#b68f40")
+        MENU_RECT = MENU_TEXT.get_rect(center=(240, 100))
+
+        N3_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON3.png"), pos=(240, 250),
+                             text_input="FACIL", font=get_font(30), base_color="#d7fcd4", hovering_color="White")
+        N2_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON3.png"), pos=(240, 320),
+                                text_input="NORMAL", font=get_font(30), base_color="#d7fcd4", hovering_color="White")
+        N1_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON3.png"), pos=(240, 390),
+                           text_input="DIFICIL", font=get_font(30), base_color="#d7fcd4", hovering_color="White")
+        QUIT_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON.png"), pos=(240, 550),
+                             text_input="SALIDA", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
+
+
+        SCREEN.blit(MENU_TEXT, MENU_RECT)
+
+        for button in [N1_BUTTON, N2_BUTTON,N3_BUTTON, QUIT_BUTTON]:
+            button.changeColor(MENU_MOUSE_POS)
+            button.update(SCREEN)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if N1_BUTTON.checkForInput(MENU_MOUSE_POS):
+                    N1()
+                if N2_BUTTON.checkForInput(MENU_MOUSE_POS):
+                    N2()
+                if N3_BUTTON.checkForInput(MENU_MOUSE_POS):
+                    N3()
+                if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
+                    main_menu()
+        pygame.display.update()
+def N3():
 
     running = True
     moving = False
@@ -131,8 +169,8 @@ def PLAY():
     P_XNOR3.rect.y = XNOR().pos[1]
 
     lista_huecos.add(H1, H2, H3)
-    lista_puertas.add(P_NAND, P_AND, P_OR, P_NOR, P_XOR, P_XNOR)
-    lista_todos_sprites.add(H1, H2, H3, P_AND, P_NAND, P_OR, P_XOR, P_XNOR, P_NOR)
+    lista_puertas.add(P_NAND, P_AND, P_OR, P_NOR,P_XOR, P_XNOR)
+    lista_todos_sprites.add(H1, H2, H3, P_AND, P_NAND, P_OR, P_NOR, P_XOR, P_XNOR)
 
     nivel = Nivel(4)
     nivel.comp()
@@ -183,10 +221,10 @@ def PLAY():
                     main_menu()
                 if R_BUTTON.checkForInput(MOUSE_POS):
                     res = 0
-                    lista_puertas.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2, P_AND3, P_NAND3, P_OR3,
-                                         P_NOR3, P_XOR3, P_XNOR3)
-                    lista_todos_sprites.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2, P_AND3, P_NAND3, P_OR3,
-                                               P_NOR3, P_XOR3, P_XNOR3)
+                    lista_puertas.remove(P_AND2, P_NAND2, P_OR2, P_NOR2,P_XOR2,P_XNOR2,P_AND3, P_NAND3, P_OR3,
+                                         P_NOR3,P_XOR3,P_XNOR3)
+                    lista_todos_sprites.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_AND3, P_NAND3, P_OR3,
+                                               P_NOR3)
 
                     P_AND.rect.x = AND().pos[0]
                     P_AND.rect.y = AND().pos[1]
@@ -288,7 +326,8 @@ def PLAY():
                         elif r == P_XNOR:
                             lista_puertas.add(P_XNOR2)
                             lista_todos_sprites.add(P_XNOR2)
-                        elif r == P_AND2:
+
+                        if r == P_AND2:
                             lista_puertas.add(P_AND3)
                             lista_todos_sprites.add(P_AND3)
                         elif r == P_NAND2:
@@ -306,6 +345,7 @@ def PLAY():
                         elif r == P_XNOR2:
                             lista_puertas.add(P_XNOR3)
                             lista_todos_sprites.add(P_XNOR3)
+
 
                 moving = False
 
@@ -347,8 +387,440 @@ def PLAY():
         SCREEN.blit(out, out_RECT)
 
         pygame.display.update()
+def N2():
+
+    running = True
+    moving = False
+
+    lista_huecos = pygame.sprite.Group()
+    lista_puertas = pygame.sprite.Group()
+    lista_todos_sprites = pygame.sprite.Group()
+
+    H1 = Hueco()
+    H1.rect.x = 210
+    H1.rect.y = 75
+
+    H2 = Hueco()
+    H2.rect.x = 90
+    H2.rect.y = 240
+
+    H3 = Hueco()
+    H3.rect.x = 330
+    H3.rect.y = 240
+
+    P_AND = AND()
+    P_AND.rect.x = AND().pos[0]
+    P_AND.rect.y = AND().pos[1]
+
+    P_AND2 = AND()
+    P_AND2.rect.x = AND().pos[0]
+    P_AND2.rect.y = AND().pos[1]
+
+    P_NAND = NAND()
+    P_NAND.rect.x = NAND().pos[0]
+    P_NAND.rect.y = NAND().pos[1]
+
+    P_NAND2 = NAND()
+    P_NAND2.rect.x = NAND().pos[0]
+    P_NAND2.rect.y = NAND().pos[1]
+
+    P_OR = OR()
+    P_OR.rect.x = OR().pos[0]
+    P_OR.rect.y = OR().pos[1]
+
+    P_OR2 = OR()
+    P_OR2.rect.x = OR().pos[0]
+    P_OR2.rect.y = OR().pos[1]
+
+    P_NOR = NOR()
+    P_NOR.rect.x = NOR().pos[0]
+    P_NOR.rect.y = NOR().pos[1]
+
+    P_NOR2 = NOR()
+    P_NOR2.rect.x = NOR().pos[0]
+    P_NOR2.rect.y = NOR().pos[1]
+
+    P_XOR = XOR()
+    P_XOR.rect.x = XOR().pos[0]
+    P_XOR.rect.y = XOR().pos[1]
+
+    P_XOR2 = XOR()
+    P_XOR2.rect.x = XOR().pos[0]
+    P_XOR2.rect.y = XOR().pos[1]
+
+    P_XNOR = XNOR()
+    P_XNOR.rect.x = XNOR().pos[0]
+    P_XNOR.rect.y = XNOR().pos[1]
+
+    P_XNOR2 = XNOR()
+    P_XNOR2.rect.x = XNOR().pos[0]
+    P_XNOR2.rect.y = XNOR().pos[1]
+
+    lista_huecos.add(H1, H2, H3)
+    lista_puertas.add(P_NAND, P_AND, P_OR, P_NOR, P_XOR, P_XNOR)
+    lista_todos_sprites.add(H1, H2, H3, P_AND, P_NAND, P_OR, P_XOR, P_XNOR, P_NOR)
+
+    nivel = Nivel(4)
+    nivel.comp()
+    list_soluciones = nivel.posible_solucion
+    print('solciones_nievl:', list_soluciones)
+
+    in1 = str(nivel.input[0])
+    in2 = str(nivel.input[1])
+    in3 = str(nivel.input[2])
+    in4 = str(nivel.input[3])
+    res = 0
+    while running:
+
+        SCREEN.fill("black")
+        SCREEN.blit(fondo, (0, 0))
+
+        MOUSE_POS = pygame.mouse.get_pos()
+
+        lista_solucion = [0, 0, 0]
 
 
+        R_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON4.png"), pos=(375, 135),
+                          text_input="R", font=get_font(30), base_color="#d7fcd4", hovering_color="White")
+        QUIT_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON4.png"), pos=(375, 90),
+                             text_input="A", font=get_font(30), base_color="#d7fcd4", hovering_color="White")
+        F_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON.png"), pos=(240, 400),
+                          text_input="FELICIDADES", font=get_font(30), base_color="#d7fcd4",
+                          hovering_color="White")
+
+
+        for button in [R_BUTTON, QUIT_BUTTON]:
+            button.changeColor(MOUSE_POS)
+            button.update(SCREEN)
+
+        if res == 1:
+            F_BUTTON.changeColor(MOUSE_POS)
+            F_BUTTON.update(SCREEN)
+
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                running = False
+
+            if event.type == MOUSEBUTTONDOWN:
+
+                if F_BUTTON.checkForInput(MOUSE_POS) and res ==1:
+                    main_menu()
+                if QUIT_BUTTON.checkForInput(MOUSE_POS):
+                    main_menu()
+                if R_BUTTON.checkForInput(MOUSE_POS):
+                    res = 0
+                    lista_puertas.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2)
+                    lista_todos_sprites.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2)
+
+                    P_AND.rect.x = AND().pos[0]
+                    P_AND.rect.y = AND().pos[1]
+
+                    P_AND2.rect.x = AND().pos[0]
+                    P_AND2.rect.y = AND().pos[1]
+
+                    P_NAND.rect.x = NAND().pos[0]
+                    P_NAND.rect.y = NAND().pos[1]
+
+                    P_NAND2.rect.x = NAND().pos[0]
+                    P_NAND2.rect.y = NAND().pos[1]
+
+                    P_OR.rect.x = OR().pos[0]
+                    P_OR.rect.y = OR().pos[1]
+
+                    P_OR2.rect.x = OR().pos[0]
+                    P_OR2.rect.y = OR().pos[1]
+
+                    P_NOR.rect.x = NOR().pos[0]
+                    P_NOR.rect.y = NOR().pos[1]
+
+                    P_NOR2.rect.x = NOR().pos[0]
+                    P_NOR2.rect.y = NOR().pos[1]
+
+                    P_XOR.rect.x = XOR().pos[0]
+                    P_XOR.rect.y = XOR().pos[1]
+
+                    P_XOR2.rect.x = XOR().pos[0]
+                    P_XOR2.rect.y = XOR().pos[1]
+
+                    P_XNOR.rect.x = XNOR().pos[0]
+                    P_XNOR.rect.y = XNOR().pos[1]
+
+                    P_XNOR2.rect.x = XNOR().pos[0]
+                    P_XNOR2.rect.y = XNOR().pos[1]
+
+                    lista_solucion = [0, 0, 0]
+                    print(lista_puertas)
+
+                for r in lista_puertas:
+                    if r.rect.collidepoint(event.pos):
+                        moving = True
+
+            elif event.type == MOUSEMOTION and moving:
+
+                for r in lista_puertas:
+                    if r.rect.collidepoint(event.pos):
+                        r.rect.move_ip(event.rel)
+
+            elif event.type == MOUSEBUTTONUP:
+
+                for r in lista_puertas:
+                    choque = pygame.sprite.spritecollideany(r, lista_huecos)
+                    if choque:
+                        r.rect.center = choque.rect.center
+                        if choque == H1:
+                            lista_solucion[0] = r
+
+                        elif choque == H2:
+                            lista_solucion[1] = r
+
+                        else:
+                            lista_solucion[2] = r
+
+                        if r == P_AND:
+                            lista_puertas.add(P_AND2)
+                            lista_todos_sprites.add(P_AND2)
+                        elif r == P_NAND:
+                            lista_puertas.add(P_NAND2)
+                            lista_todos_sprites.add(P_NAND2)
+                        elif r == P_OR:
+                            lista_puertas.add(P_OR2)
+                            lista_todos_sprites.add(P_OR2)
+                        elif r == P_NOR:
+                            lista_puertas.add(P_NOR2)
+                            lista_todos_sprites.add(P_NOR2)
+                        elif r == P_XOR:
+                            lista_puertas.add(P_XOR2)
+                            lista_todos_sprites.add(P_XOR2)
+                        elif r == P_XNOR:
+                            lista_puertas.add(P_XNOR2)
+                            lista_todos_sprites.add(P_XNOR2)
+
+                moving = False
+
+        if lista_solucion[0] != 0 and lista_solucion[1] != 0 and lista_solucion[2] != 0:
+            count = 0
+
+            for contar, puertasz in enumerate(list_soluciones):
+                if count < len(list_soluciones):
+                    print(list_soluciones[count:count + 3])
+                    if list_soluciones[count:count + 3] == lista_solucion:
+                        res = 1
+                        print('Felicidades')
+                        res = 1
+                        break
+                    else:
+                        count += 3
+
+
+        lista_todos_sprites.draw(SCREEN)
+
+        input1 = get_font(15).render(in1, True, "#b68f40")
+        input1_RECT = input1.get_rect(center=(105, 390))
+        SCREEN.blit(input1, input1_RECT)
+
+        input2 = get_font(15).render(in2, True, "#b68f40")
+        input2_RECT = input2.get_rect(center=(130, 390))
+        SCREEN.blit(input2, input2_RECT)
+
+        input3 = get_font(15).render(in3, True, "#b68f40")
+        input3_RECT = input3.get_rect(center=(348, 390))
+        SCREEN.blit(input3, input3_RECT)
+
+        input4 = get_font(15).render(in4, True, "#b68f40")
+        input4_RECT = input4.get_rect(center=(370, 390))
+        SCREEN.blit(input4, input4_RECT)
+
+        out = get_font(15).render('1', True, "#b68f40")
+        out_RECT = out.get_rect(center=(239, 45))
+        SCREEN.blit(out, out_RECT)
+
+        pygame.display.update()
+def N1():
+
+    running = True
+    moving = False
+
+    lista_huecos = pygame.sprite.Group()
+    lista_puertas = pygame.sprite.Group()
+    lista_todos_sprites = pygame.sprite.Group()
+
+    H1 = Hueco()
+    H1.rect.x = 210
+    H1.rect.y = 75
+
+    H2 = Hueco()
+    H2.rect.x = 90
+    H2.rect.y = 240
+
+    H3 = Hueco()
+    H3.rect.x = 330
+    H3.rect.y = 240
+
+    P_AND = AND()
+    P_AND.rect.x = AND().pos[0]
+    P_AND.rect.y = AND().pos[1]
+
+    P_NAND = NAND()
+    P_NAND.rect.x = NAND().pos[0]
+    P_NAND.rect.y = NAND().pos[1]
+
+    P_OR = OR()
+    P_OR.rect.x = OR().pos[0]
+    P_OR.rect.y = OR().pos[1]
+
+    P_NOR = NOR()
+    P_NOR.rect.x = NOR().pos[0]
+    P_NOR.rect.y = NOR().pos[1]
+
+    P_XOR = XOR()
+    P_XOR.rect.x = XOR().pos[0]
+    P_XOR.rect.y = XOR().pos[1]
+
+    P_XNOR = XNOR()
+    P_XNOR.rect.x = XNOR().pos[0]
+    P_XNOR.rect.y = XNOR().pos[1]
+
+    lista_huecos.add(H1, H2, H3)
+    lista_puertas.add(P_NAND, P_AND, P_OR, P_NOR, P_XOR, P_XNOR)
+    lista_todos_sprites.add(H1, H2, H3, P_AND, P_NAND, P_OR, P_XOR, P_XNOR, P_NOR)
+
+    nivel = Nivel(4)
+    nivel.comp()
+    list_soluciones = nivel.posible_solucion
+    print('solciones_nievl:', list_soluciones)
+
+    in1 = str(nivel.input[0])
+    in2 = str(nivel.input[1])
+    in3 = str(nivel.input[2])
+    in4 = str(nivel.input[3])
+    res = 0
+    while running:
+
+        SCREEN.fill("black")
+        SCREEN.blit(fondo, (0, 0))
+
+        MOUSE_POS = pygame.mouse.get_pos()
+
+        lista_solucion = [0, 0, 0]
+
+
+        R_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON4.png"), pos=(375, 135),
+                          text_input="R", font=get_font(30), base_color="#d7fcd4", hovering_color="White")
+        QUIT_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON4.png"), pos=(375, 90),
+                             text_input="A", font=get_font(30), base_color="#d7fcd4", hovering_color="White")
+        F_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON.png"), pos=(240, 400),
+                          text_input="FELICIDADES", font=get_font(30), base_color="#d7fcd4",
+                          hovering_color="White")
+
+
+        for button in [R_BUTTON, QUIT_BUTTON]:
+            button.changeColor(MOUSE_POS)
+            button.update(SCREEN)
+
+        if res == 1:
+            F_BUTTON.changeColor(MOUSE_POS)
+            F_BUTTON.update(SCREEN)
+
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                running = False
+
+            if event.type == MOUSEBUTTONDOWN:
+
+                if F_BUTTON.checkForInput(MOUSE_POS) and res ==1:
+                    main_menu()
+                if QUIT_BUTTON.checkForInput(MOUSE_POS):
+                    main_menu()
+                if R_BUTTON.checkForInput(MOUSE_POS):
+                    res = 0
+
+                    P_AND.rect.x = AND().pos[0]
+                    P_AND.rect.y = AND().pos[1]
+
+                    P_NAND.rect.x = NAND().pos[0]
+                    P_NAND.rect.y = NAND().pos[1]
+
+                    P_OR.rect.x = OR().pos[0]
+                    P_OR.rect.y = OR().pos[1]
+
+                    P_NOR.rect.x = NOR().pos[0]
+                    P_NOR.rect.y = NOR().pos[1]
+
+                    P_XOR.rect.x = XOR().pos[0]
+                    P_XOR.rect.y = XOR().pos[1]
+
+                    P_XNOR.rect.x = XNOR().pos[0]
+                    P_XNOR.rect.y = XNOR().pos[1]
+
+                    lista_solucion = [0, 0, 0]
+                    print(lista_puertas)
+
+                for r in lista_puertas:
+                    if r.rect.collidepoint(event.pos):
+                        moving = True
+
+            elif event.type == MOUSEMOTION and moving:
+
+                for r in lista_puertas:
+                    if r.rect.collidepoint(event.pos):
+                        r.rect.move_ip(event.rel)
+
+            elif event.type == MOUSEBUTTONUP:
+
+                for r in lista_puertas:
+                    choque = pygame.sprite.spritecollideany(r, lista_huecos)
+                    if choque:
+                        r.rect.center = choque.rect.center
+                        if choque == H1:
+                            lista_solucion[0] = r
+
+                        elif choque == H2:
+                            lista_solucion[1] = r
+
+                        else:
+                            lista_solucion[2] = r
+
+
+                moving = False
+
+        if lista_solucion[0] != 0 and lista_solucion[1] != 0 and lista_solucion[2] != 0:
+            count = 0
+
+            for contar, puertasz in enumerate(list_soluciones):
+                if count < len(list_soluciones):
+                    print(list_soluciones[count:count + 3])
+                    if list_soluciones[count:count + 3] == lista_solucion:
+                        res = 1
+                        print('Felicidades')
+                        res = 1
+                        break
+                    else:
+                        count += 3
+
+
+        lista_todos_sprites.draw(SCREEN)
+
+        input1 = get_font(15).render(in1, True, "#b68f40")
+        input1_RECT = input1.get_rect(center=(105, 390))
+        SCREEN.blit(input1, input1_RECT)
+
+        input2 = get_font(15).render(in2, True, "#b68f40")
+        input2_RECT = input2.get_rect(center=(130, 390))
+        SCREEN.blit(input2, input2_RECT)
+
+        input3 = get_font(15).render(in3, True, "#b68f40")
+        input3_RECT = input3.get_rect(center=(348, 390))
+        SCREEN.blit(input3, input3_RECT)
+
+        input4 = get_font(15).render(in4, True, "#b68f40")
+        input4_RECT = input4.get_rect(center=(370, 390))
+        SCREEN.blit(input4, input4_RECT)
+
+        out = get_font(15).render('1', True, "#b68f40")
+        out_RECT = out.get_rect(center=(239, 45))
+        SCREEN.blit(out, out_RECT)
+
+        pygame.display.update()
 def TUTORIAL():
 
     while True:
