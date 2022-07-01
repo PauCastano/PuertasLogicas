@@ -143,7 +143,7 @@ def PLAY():
     in2 = str(nivel.input[1])
     in3 = str(nivel.input[2])
     in4 = str(nivel.input[3])
-
+    res = 0
     while running:
 
         SCREEN.fill("black")
@@ -153,33 +153,36 @@ def PLAY():
 
         lista_solucion = [0, 0, 0]
 
-        res = 0
 
         R_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON4.png"), pos=(375, 135),
                           text_input="R", font=get_font(30), base_color="#d7fcd4", hovering_color="White")
         QUIT_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON4.png"), pos=(375, 90),
                              text_input="A", font=get_font(30), base_color="#d7fcd4", hovering_color="White")
-        F_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON.png"), pos=(375, 135),
-                          text_input="FELICIDADES", font=get_font(40), base_color="#d7fcd4",
+        F_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON.png"), pos=(240, 400),
+                          text_input="FELICIDADES", font=get_font(30), base_color="#d7fcd4",
                           hovering_color="White")
-        if res == 1:
-            F_BUTTON.changeColor(MOUSE_POS)
-            F_BUTTON.update(SCREEN)
+
 
         for button in [R_BUTTON, QUIT_BUTTON]:
             button.changeColor(MOUSE_POS)
             button.update(SCREEN)
 
-
+        if res == 1:
+            F_BUTTON.changeColor(MOUSE_POS)
+            F_BUTTON.update(SCREEN)
 
         for event in pygame.event.get():
             if event.type == QUIT:
                 running = False
 
             if event.type == MOUSEBUTTONDOWN:
+
+                if F_BUTTON.checkForInput(MOUSE_POS) and res ==1:
+                    main_menu()
                 if QUIT_BUTTON.checkForInput(MOUSE_POS):
                     main_menu()
                 if R_BUTTON.checkForInput(MOUSE_POS):
+                    res = 0
                     lista_puertas.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2, P_AND3, P_NAND3, P_OR3,
                                          P_NOR3, P_XOR3, P_XNOR3)
                     lista_todos_sprites.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2, P_AND3, P_NAND3, P_OR3,
@@ -315,11 +318,11 @@ def PLAY():
                     if list_soluciones[count:count + 3] == lista_solucion:
                         res = 1
                         print('Felicidades')
-                        pygame.display.update()
+                        res = 1
                         break
                     else:
                         count += 3
-                        res = 0
+
 
         lista_todos_sprites.draw(SCREEN)
 
