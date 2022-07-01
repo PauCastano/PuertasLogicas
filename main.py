@@ -153,19 +153,31 @@ def PLAY():
 
         lista_solucion = [0, 0, 0]
 
+        res = 0
+
         R_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON4.png"), pos=(375, 135),
                           text_input="R", font=get_font(30), base_color="#d7fcd4", hovering_color="White")
-
-        for button in [R_BUTTON]:
+        QUIT_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON4.png"), pos=(375, 90),
+                             text_input="A", font=get_font(30), base_color="#d7fcd4", hovering_color="White")
+        F_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON.png"), pos=(375, 135),
+                          text_input="FELICIDADES", font=get_font(40), base_color="#d7fcd4",
+                          hovering_color="White")
+        if res == 1:
+            F_BUTTON.changeColor(MOUSE_POS)
+            F_BUTTON.update(SCREEN)
+        for button in [R_BUTTON, QUIT_BUTTON]:
             button.changeColor(MOUSE_POS)
             button.update(SCREEN)
+
+
 
         for event in pygame.event.get():
             if event.type == QUIT:
                 running = False
 
-            elif event.type == MOUSEBUTTONDOWN:
-
+            if event.type == MOUSEBUTTONDOWN:
+                if QUIT_BUTTON.checkForInput(MOUSE_POS):
+                    main_menu()
                 if R_BUTTON.checkForInput(MOUSE_POS):
                     lista_puertas.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2, P_AND3, P_NAND3, P_OR3,
                                          P_NOR3, P_XOR3, P_XNOR3)
@@ -298,13 +310,15 @@ def PLAY():
 
             for contar, puertasz in enumerate(list_soluciones):
                 if count < len(list_soluciones):
-                    print(list_soluciones[count:count + 3])
+                    #print(list_soluciones[count:count + 3])
                     if list_soluciones[count:count + 3] == lista_solucion:
-                        print('FELICIDADES')
+                        res = 1
+                        print(res)
+                        pygame.display.update()
                         break
                     else:
                         count += 3
-            # print('VUELVELO A INTENTAR')
+                        res = 0
 
         lista_todos_sprites.draw(SCREEN)
 
@@ -379,8 +393,6 @@ def TUTORIAL():
                     main_menu()
 
         pygame.display.update()
-
-
 def T_AND():
     while True:
         AND_MOUSE_POS = pygame.mouse.get_pos()
@@ -408,8 +420,6 @@ def T_AND():
                     TUTORIAL()
 
         pygame.display.update()
-
-
 def T_NAND():
     while True:
         NAND_MOUSE_POS = pygame.mouse.get_pos()
@@ -436,8 +446,6 @@ def T_NAND():
                     TUTORIAL()
 
         pygame.display.update()
-
-
 def T_OR():
     while True:
         OR_MOUSE_POS = pygame.mouse.get_pos()
@@ -464,8 +472,6 @@ def T_OR():
                     TUTORIAL()
 
         pygame.display.update()
-
-
 def T_NOR():
     while True:
         NOR_MOUSE_POS = pygame.mouse.get_pos()
@@ -544,8 +550,6 @@ def T_XNOR():
                     TUTORIAL()
 
         pygame.display.update()
-
-
 def main_menu():
     while True:
         SCREEN.blit(BG, (0, 0))
@@ -585,5 +589,3 @@ def main_menu():
 
 
 main_menu()
-
-
