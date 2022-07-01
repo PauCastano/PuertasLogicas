@@ -18,28 +18,6 @@ pygame.init()
 SCREEN_WIDTH = 480
 SCREEN_HEIGHT = 640
 IMG_DIR = "FOTOS"
-Amarillo = (255, 255, 0)
-Rojo = (255, 0, 0)
-Blanco = (255, 255, 255)
-
-# P_AND = AND().image.get_rect()
-# P_AND.center = AND().pos
-
-# P_OR = OR().image.get_rect()
-# P_OR.center = OR().pos
-
-# Hueco1 = pygame.Rect((210, 75), (58, 120))
-# Hueco2 = pygame.Rect((90, 240), (58, 120))
-# Hueco3 = pygame.Rect((330, 240), (58, 120))
-# H1 = Hueco((210, 75), (58, 120))
-# Hueco1 = pygame.Rect(H1.cordenadas, H1.tamanyo)
-# H2 = Hueco((90, 240), (58, 120))
-# Hueco2 = pygame.Rect(H2.cordenadas, H2.tamanyo)
-# H3 = Hueco((330, 240), (58, 120))
-# Hueco3 = pygame.Rect(H3.cordenadas, H3.tamanyo)
-
-# P_OR = OR().image.get_rect()
-# P_OR.center = SCREEN_WIDTH * 0.5 // 3, SCREEN_HEIGHT * 4.5 // 5
 
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 fondo = pygame.image.load('FOTOS/FONDO1.jpg')
@@ -49,14 +27,13 @@ def get_font(size):  # Returns Press-Start-2P in the desired size
     return pygame.font.Font("FOTOS/font.ttf", size)
 
 
-def main():
+def play():
     running = True
     moving = False
 
     lista_huecos = pygame.sprite.Group()
     lista_puertas = pygame.sprite.Group()
     lista_todos_sprites = pygame.sprite.Group()
-    grupo_solucion = pygame.sprite.Group()
 
     H1 = Hueco()
     H1.rect.x = 210
@@ -166,6 +143,8 @@ def main():
 
         R_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON4.png"), pos=(375, 135),
                           text_input="R", font=get_font(30), base_color="#d7fcd4", hovering_color="White")
+
+
 
         for button in [R_BUTTON]:
             button.changeColor(MOUSE_POS)
@@ -341,4 +320,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    play()
