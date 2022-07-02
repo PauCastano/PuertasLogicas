@@ -48,85 +48,98 @@ def play():
     H3.rect.y = 240
 
     P_AND = AND()
+    P_AND2 = AND()
+    P_AND3 = AND()
+    P_NAND = NAND()
+    P_NAND2 = NAND()
+    P_NAND3 = NAND()
+    P_OR = OR()
+    P_OR2 = OR()
+    P_OR3 = OR()
+    P_NOR = NOR()
+    P_NOR2 = NOR()
+    P_NOR3 = NOR()
+    P_XOR = XOR()
+    P_XOR2 = XOR()
+    P_XOR3 = XOR()
+    P_XNOR = XNOR()
+    P_XNOR2 = XNOR()
+    P_XNOR3 = XNOR()
+
     P_AND.rect.x = AND().pos[0]
     P_AND.rect.y = AND().pos[1]
 
-    P_AND2 = AND()
     P_AND2.rect.x = AND().pos[0]
     P_AND2.rect.y = AND().pos[1]
 
-    P_AND3 = AND()
     P_AND3.rect.x = AND().pos[0]
     P_AND3.rect.y = AND().pos[1]
 
-    P_NAND = NAND()
     P_NAND.rect.x = NAND().pos[0]
     P_NAND.rect.y = NAND().pos[1]
 
-    P_NAND2 = NAND()
     P_NAND2.rect.x = NAND().pos[0]
     P_NAND2.rect.y = NAND().pos[1]
 
-    P_NAND3 = AND()
     P_NAND3.rect.x = NAND().pos[0]
     P_NAND3.rect.y = NAND().pos[1]
 
-    P_OR = OR()
     P_OR.rect.x = OR().pos[0]
     P_OR.rect.y = OR().pos[1]
 
-    P_OR2 = OR()
     P_OR2.rect.x = OR().pos[0]
     P_OR2.rect.y = OR().pos[1]
 
-    P_OR3 = OR()
     P_OR3.rect.x = OR().pos[0]
     P_OR3.rect.y = OR().pos[1]
 
-    P_NOR = NOR()
     P_NOR.rect.x = NOR().pos[0]
     P_NOR.rect.y = NOR().pos[1]
 
-    P_NOR2 = NOR()
     P_NOR2.rect.x = NOR().pos[0]
     P_NOR2.rect.y = NOR().pos[1]
 
-    P_NOR3 = NOR()
     P_NOR3.rect.x = NOR().pos[0]
     P_NOR3.rect.y = NOR().pos[1]
 
-    P_XOR = XOR()
     P_XOR.rect.x = XOR().pos[0]
     P_XOR.rect.y = XOR().pos[1]
 
-    P_XOR2 = XOR()
     P_XOR2.rect.x = XOR().pos[0]
     P_XOR2.rect.y = XOR().pos[1]
 
-    P_XOR3 = XOR()
     P_XOR3.rect.x = XOR().pos[0]
     P_XOR3.rect.y = XOR().pos[1]
 
-    P_XNOR = XNOR()
     P_XNOR.rect.x = XNOR().pos[0]
     P_XNOR.rect.y = XNOR().pos[1]
 
-    P_XNOR2 = XNOR()
     P_XNOR2.rect.x = XNOR().pos[0]
     P_XNOR2.rect.y = XNOR().pos[1]
 
-    P_XNOR3 = XNOR()
     P_XNOR3.rect.x = XNOR().pos[0]
     P_XNOR3.rect.y = XNOR().pos[1]
 
     lista_huecos.add(H1, H2, H3)
-    lista_puertas.add(P_NAND, P_AND, P_OR, P_NOR, P_XOR, P_XNOR)
+    lista_puertas.add(P_AND, P_NAND, P_OR, P_NOR, P_XOR, P_XNOR)
     lista_todos_sprites.add(H1, H2, H3, P_AND, P_NAND, P_OR, P_XOR, P_XNOR, P_NOR)
+
+
+    todas_puertas = [AND(), NAND(), OR(), NOR(), XOR(), XNOR(), AND(), NAND(), OR(), NOR(), XOR(), XNOR(), AND(),
+                     NAND(), OR(), NOR(), XOR(), XNOR()]
+    '''
+    lista_puertas2 = lista_puertas
+    lista_puertas2.add(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2, P_AND3, P_NAND3, P_OR3,
+                                         P_NOR3, P_XOR3, P_XNOR3)
+    
+    for cuenta, aaa in enumerate(lista_puertas2):
+        aaa.rect.x = todas_puertas[cuenta].pos[0]
+        aaa.rect.y = todas_puertas[cuenta].pos[1]
+    '''
 
     nivel = Nivel(4)
     nivel.comp()
     list_soluciones = nivel.posible_solucion
-    print('solciones_nievl:', list_soluciones)
 
     in1 = str(nivel.input[0])
     in2 = str(nivel.input[1])
@@ -162,6 +175,12 @@ def play():
                     lista_todos_sprites.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2, P_AND3, P_NAND3, P_OR3,
                                                P_NOR3, P_XOR3, P_XNOR3)
 
+                    for bup, bbb in enumerate(lista_puertas):
+                        bbb.rect.x = todas_puertas[bup].pos[0]
+                        bbb.rect.y = todas_puertas[bup].pos[1]
+
+
+                    '''
                     P_AND.rect.x = AND().pos[0]
                     P_AND.rect.y = AND().pos[1]
 
@@ -215,7 +234,7 @@ def play():
 
                     P_XNOR3.rect.x = XNOR().pos[0]
                     P_XNOR3.rect.y = XNOR().pos[1]
-
+                    '''
                     lista_solucion = [0, 0, 0]
                     print(lista_puertas)
 
