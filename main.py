@@ -35,7 +35,6 @@ TXNOR = pygame.image.load('FOTOS/T.XNOR.png')
 
 def get_font(size):  # Returns Press-Start-2P in the desired size
     return pygame.font.Font("FOTOS/font.ttf", size)
-
 def PLAY():
     while True:
         SCREEN.blit(BG, (0, 0))
@@ -71,7 +70,6 @@ def PLAY():
                 if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
                     main_menu()
         pygame.display.update()
-
 def N2(): # Dos puertas (NORMAL)
 
     running = True
@@ -309,8 +307,6 @@ def N2(): # Dos puertas (NORMAL)
         SCREEN.blit(out, out_RECT)
 
         pygame.display.update()
-
-
 def N1(): # Una puerta (Dificil)
 
     running = True
@@ -708,6 +704,7 @@ def T_XNOR():
         pygame.display.update()
 def main_menu():
     while True:
+        SCREEN.fill("black")
         SCREEN.blit(BG, (0, 0))
 
         MENU_MOUSE_POS = pygame.mouse.get_pos()
@@ -742,6 +739,55 @@ def main_menu():
                     sys.exit()
 
         pygame.display.update()
+def main_inici():
+    while True:
+        SCREEN.blit(BG, (0, 0))
+
+        MENU_MOUSE_POS = pygame.mouse.get_pos()
+
+        MENU_TEXT = get_font(40).render("PRE: ", True, "#b68f40")
+        MENU_RECT = MENU_TEXT.get_rect(center=(270, 200))
+
+        MENU2_TEXT = get_font(40).render("Puertas ", True, "#b68f40")
+        MENU2_RECT = MENU2_TEXT.get_rect(center=(260, 240))
+
+        MENU3_TEXT = get_font(40).render("logicas ", True, "#b68f40")
+        MENU3_RECT = MENU3_TEXT.get_rect(center=(260, 280))
+
+        PRES_TEXT = get_font(20).render("PROGRAMADORS:", True, "#b68f40")
+        PRES_RECT = PRES_TEXT.get_rect(center=(240, 500))
+
+        NOM_TEXT = get_font(20).render("Pau Castaño", True, "#b68f40")
+        NOM_RECT = NOM_TEXT.get_rect(center=(240, 520))
+
+        NOM2_TEXT = get_font(20).render("Ariadna Delriu", True, "#b68f40")
+        NOM2_RECT = NOM2_TEXT.get_rect(center=(240, 540))
+
+        NOM3_TEXT = get_font(20).render("Guillem Rovira", True, "#b68f40")
+        NOM3_RECT = NOM3_TEXT.get_rect(center=(240, 560))
+
+        PLAY_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON.png"), pos=(240, 400),
+                                text_input="EMPEZAR", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
 
 
-main_menu()
+        SCREEN.blit(MENU_TEXT, MENU_RECT)
+        SCREEN.blit(MENU2_TEXT, MENU2_RECT)
+        SCREEN.blit(MENU3_TEXT, MENU3_RECT)
+        SCREEN.blit(NOM_TEXT, NOM_RECT)
+        SCREEN.blit(NOM2_TEXT, NOM2_RECT)
+        SCREEN.blit(NOM3_TEXT, NOM3_RECT)
+        SCREEN.blit(PRES_TEXT, PRES_RECT)
+        for button in [PLAY_BUTTON]:
+            button.changeColor(MENU_MOUSE_POS)
+            button.update(SCREEN)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if PLAY_BUTTON.checkForInput(MENU_MOUSE_POS):
+                    main_menu()
+        pygame.display.update()
+
+main_inici()
