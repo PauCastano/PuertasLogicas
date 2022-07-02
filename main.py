@@ -211,6 +211,9 @@ def N2(): # Dos puertas (NORMAL)
                     for bup, bbb in enumerate(lista_reset):
                         bbb.rect.x = todas_puertas[bup].pos[0]
                         bbb.rect.y = todas_puertas[bup].pos[1]
+                        H1.sacar(bbb)
+                        H2.sacar(bbb)
+                        H3.sacar(bbb)
 
                     lista_puertas.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2)
                     lista_todos_sprites.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2)
@@ -235,12 +238,15 @@ def N2(): # Dos puertas (NORMAL)
                         r.rect.center = choque.rect.center
                         if choque == H1:
                             lista_solucion[0] = r
+                            H1.meter(r)
 
                         elif choque == H2:
                             lista_solucion[1] = r
+                            H2.meter(r)
 
                         else:
                             lista_solucion[2] = r
+                            H3.meter(r)
 
                         if r == P_AND:
                             lista_puertas.add(P_AND2)
@@ -416,6 +422,9 @@ def N1(): # Una puerta (Dificil)
                     for cuenta, ccc in enumerate(lista_puertas):
                         ccc.rect.x = todas_puertas[cuenta].pos[0]
                         ccc.rect.y = todas_puertas[cuenta].pos[1]
+                        H1.sacar(ccc)
+                        H2.sacar(ccc)
+                        H3.sacar(ccc)
 
                     lista_solucion = [0, 0, 0]
 
@@ -436,14 +445,16 @@ def N1(): # Una puerta (Dificil)
                     if choque:
                         r.rect.center = choque.rect.center
                         if choque == H1:
+                            H1.meter(r)
                             lista_solucion[0] = r
 
                         elif choque == H2:
                             lista_solucion[1] = r
+                            H2.meter(r)
 
                         else:
                             lista_solucion[2] = r
-
+                            H3.meter(r)
 
                 moving = False
 
