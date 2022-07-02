@@ -664,6 +664,8 @@ def N1():
     in3 = str(nivel.input[2])
     in4 = str(nivel.input[3])
     res = 0
+    todas_puertas = [AND(), NAND(), OR(), NOR(), XOR(), XNOR(), AND(), NAND(), OR(), NOR(), XOR(), XNOR(), AND(),
+                     NAND(), OR(), NOR(), XOR(), XNOR()]
     while running:
 
         SCREEN.fill("black")
@@ -704,23 +706,9 @@ def N1():
                 if R_BUTTON.checkForInput(MOUSE_POS):
                     res = 0
 
-                    P_AND.rect.x = AND().pos[0]
-                    P_AND.rect.y = AND().pos[1]
-
-                    P_NAND.rect.x = NAND().pos[0]
-                    P_NAND.rect.y = NAND().pos[1]
-
-                    P_OR.rect.x = OR().pos[0]
-                    P_OR.rect.y = OR().pos[1]
-
-                    P_NOR.rect.x = NOR().pos[0]
-                    P_NOR.rect.y = NOR().pos[1]
-
-                    P_XOR.rect.x = XOR().pos[0]
-                    P_XOR.rect.y = XOR().pos[1]
-
-                    P_XNOR.rect.x = XNOR().pos[0]
-                    P_XNOR.rect.y = XNOR().pos[1]
+                    for cuenta, ccc in enumerate(lista_puertas):
+                        ccc.rect.x = todas_puertas[cuenta].pos[0]
+                        ccc.rect.y = todas_puertas[cuenta].pos[1]
 
                     lista_solucion = [0, 0, 0]
                     print(lista_puertas)
