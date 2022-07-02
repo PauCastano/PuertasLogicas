@@ -50,6 +50,7 @@ def get_font(size):  # Returns Press-Start-2P in the desired size
 
 
 def main():
+
     running = True
     moving = False
 
@@ -156,6 +157,7 @@ def main():
     in3 = str(nivel.input[2])
     in4 = str(nivel.input[3])
 
+    num_puertas_colocadas = 0
     while running:
 
         MOUSE_POS = pygame.mouse.get_pos()
@@ -165,7 +167,7 @@ def main():
         lista_solucion = [0, 0, 0]
 
         R_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON4.png"), pos=(375, 135),
-                          text_input="R", font=get_font(30), base_color="#d7fcd4", hovering_color="White")
+                         text_input="R", font=get_font(30), base_color="#d7fcd4", hovering_color="White")
 
         for button in [R_BUTTON]:
             button.changeColor(MOUSE_POS)
@@ -178,10 +180,9 @@ def main():
             elif event.type == MOUSEBUTTONDOWN:
 
                 if R_BUTTON.checkForInput(MOUSE_POS):
-                    lista_puertas.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2, P_AND3, P_NAND3, P_OR3,
-                                         P_NOR3, P_XOR3, P_XNOR3)
-                    lista_todos_sprites.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2, P_AND3, P_NAND3, P_OR3,
-                                               P_NOR3, P_XOR3, P_XNOR3)
+
+                    lista_puertas.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2, P_AND3, P_NAND3, P_OR3, P_NOR3, P_XOR3, P_XNOR3)
+                    lista_todos_sprites.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2, P_AND3, P_NAND3, P_OR3, P_NOR3, P_XOR3, P_XNOR3)
 
                     P_AND.rect.x = AND().pos[0]
                     P_AND.rect.y = AND().pos[1]
@@ -237,8 +238,10 @@ def main():
                     P_XNOR3.rect.x = XNOR().pos[0]
                     P_XNOR3.rect.y = XNOR().pos[1]
 
-                    lista_solucion = [0, 0, 0]
-                    print(lista_puertas)
+                    lista_solucion = [0,0,0]
+
+
+
                 for r in lista_puertas:
                     if r.rect.collidepoint(event.pos):
                         moving = True
@@ -264,6 +267,8 @@ def main():
                         else:
                             lista_solucion[2] = r
 
+
+
                         if r == P_AND:
                             lista_puertas.add(P_AND2)
                             lista_todos_sprites.add(P_AND2)
@@ -282,7 +287,7 @@ def main():
                         elif r == P_XNOR:
                             lista_puertas.add(P_XNOR2)
                             lista_todos_sprites.add(P_XNOR2)
-                        if r == P_AND2:
+                        elif r == P_AND2:
                             lista_puertas.add(P_AND3)
                             lista_todos_sprites.add(P_AND3)
                         elif r == P_NAND2:
@@ -303,15 +308,15 @@ def main():
 
                 moving = False
 
-        if lista_solucion[0] != 0 and lista_solucion[1] != 0 and lista_solucion[2] != 0:
-            count = 0
-            for contar, puertasz in enumerate(list_soluciones):
-                if count < len(list_soluciones):
-                    if list_soluciones[count:count + 3] == lista_solucion:
-                        print('FELICIDADES')
-                    else:
-                        count += 3
-                        #print('VUELVELO A INTENTAR')
+
+        #if lista_solucion[0] != 0 and lista_solucion[1] != 0 and lista_solucion[2] != 0:
+         #   count = 0
+          #  for contar, puertasz in enumerate(list_soluciones):
+           #     if count < len(list_soluciones) and list_soluciones[count:count+3] == lista_solucion:
+            #        print('FELICIDADES')
+             #       count += 3
+              #  else:
+               #     print('VUELVELO A INTENTAR')
 
         # L'ordre en que fem les figures importa en quines estan en primera fila
 
@@ -338,3 +343,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
