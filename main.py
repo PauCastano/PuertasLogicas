@@ -72,7 +72,6 @@ def PLAY():
                     main_menu()
         pygame.display.update()
 
-
 def N2(): # Dos puertas (NORMAL)
 
     running = True
@@ -385,7 +384,7 @@ def N1(): # Una puerta (Dificil)
                           text_input="R", font=get_font(30), base_color="#d7fcd4", hovering_color="White")
         QUIT_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON4.png"), pos=(375, 90),
                              text_input="A", font=get_font(30), base_color="#d7fcd4", hovering_color="White")
-        F_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON.png"), pos=(240, 410),
+        F_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON3.png"), pos=(240, 410),
                           text_input="FELICIDADES", font=get_font(30), base_color="#d7fcd4",
                           hovering_color="White")
         T_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON3.png"), pos=(240, 410),
