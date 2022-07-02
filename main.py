@@ -72,7 +72,8 @@ def PLAY():
                     main_menu()
         pygame.display.update()
 
-def N2():
+
+def N2(): # Dos puertas (NORMAL)
 
     running = True
     moving = False
@@ -80,6 +81,7 @@ def N2():
     lista_huecos = pygame.sprite.Group()
     lista_puertas = pygame.sprite.Group()
     lista_todos_sprites = pygame.sprite.Group()
+    lista_reset = pygame.sprite.Group()
 
     H1 = Hueco()
     H1.rect.x = 210
@@ -144,19 +146,20 @@ def N2():
     lista_huecos.add(H1, H2, H3)
     lista_puertas.add(P_AND, P_NAND, P_OR, P_NOR, P_XOR, P_XNOR)
     lista_todos_sprites.add(H1, H2, H3, P_AND, P_NAND, P_OR, P_XOR, P_XNOR, P_NOR)
+    lista_reset.add(P_AND, P_NAND, P_OR, P_NOR, P_XOR, P_XNOR, P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2)
+
 
     nivel = Nivel(4)
     nivel.comp()
     list_soluciones = nivel.posible_solucion
-    print('solciones_nievl:', list_soluciones)
 
     in1 = str(nivel.input[0])
     in2 = str(nivel.input[1])
     in3 = str(nivel.input[2])
     in4 = str(nivel.input[3])
     res = 0
-    todas_puertas = [AND(), NAND(), OR(), NOR(), XOR(), XNOR(), AND(), NAND(), OR(), NOR(), XOR(), XNOR(), AND(),
-                     NAND(), OR(), NOR(), XOR(), XNOR()]
+    todas_puertas = [AND(), NAND(), OR(), NOR(), XOR(), XNOR(), AND(), NAND(), OR(), NOR(), XOR(), XNOR()]
+
     while running:
 
         SCREEN.fill("black")
@@ -177,7 +180,6 @@ def N2():
         T_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON3.png"), pos=(240, 410),
                           text_input="TRY AGAIN", font=get_font(30), base_color="#d7fcd4",
                           hovering_color="White")
-
 
         for button in [R_BUTTON, QUIT_BUTTON]:
             button.changeColor(MOUSE_POS)
@@ -205,15 +207,15 @@ def N2():
                     PLAY()
                 if R_BUTTON.checkForInput(MOUSE_POS) or (T_BUTTON.checkForInput(MOUSE_POS) and res==2):
                     res = 0
-                    lista_puertas.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2)
-                    lista_todos_sprites.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2)
 
-                    for bup, bbb in enumerate(lista_puertas):
+                    for bup, bbb in enumerate(lista_reset):
                         bbb.rect.x = todas_puertas[bup].pos[0]
                         bbb.rect.y = todas_puertas[bup].pos[1]
 
+                    lista_puertas.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2)
+                    lista_todos_sprites.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2)
+
                     lista_solucion = [0, 0, 0]
-                    print(lista_puertas)
 
                 for r in lista_puertas:
                     if r.rect.collidepoint(event.pos):
@@ -243,6 +245,7 @@ def N2():
                         if r == P_AND:
                             lista_puertas.add(P_AND2)
                             lista_todos_sprites.add(P_AND2)
+
                         elif r == P_NAND:
                             lista_puertas.add(P_NAND2)
                             lista_todos_sprites.add(P_NAND2)
@@ -301,7 +304,9 @@ def N2():
         SCREEN.blit(out, out_RECT)
 
         pygame.display.update()
-def N1():
+
+
+def N1(): # Una puerta (Dificil)
 
     running = True
     moving = False
@@ -353,7 +358,6 @@ def N1():
     nivel = Nivel(4)
     nivel.comp()
     list_soluciones = nivel.posible_solucion
-    print('solciones_nievl:', list_soluciones)
 
     in1 = str(nivel.input[0])
     in2 = str(nivel.input[1])
@@ -414,7 +418,6 @@ def N1():
                         ccc.rect.y = todas_puertas[cuenta].pos[1]
 
                     lista_solucion = [0, 0, 0]
-                    print(lista_puertas)
 
                 for r in lista_puertas:
                     if r.rect.collidepoint(event.pos):
