@@ -50,7 +50,7 @@ def PLAY():
         N1_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON3.png"), pos=(240, 390),
                            text_input="DIFICIL", font=get_font(30), base_color="#d7fcd4", hovering_color="White")
         QUIT_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON.png"), pos=(240, 550),
-                             text_input="SALIDA", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
+                             text_input="ATRAS", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
 
 
         SCREEN.blit(MENU_TEXT, MENU_RECT)
@@ -174,6 +174,9 @@ def N2():
         F_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON3.png"), pos=(240, 410),
                           text_input="FELICIDADES", font=get_font(30), base_color="#d7fcd4",
                           hovering_color="White")
+        T_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON3.png"), pos=(240, 410),
+                          text_input="TRY AGAIN", font=get_font(30), base_color="#d7fcd4",
+                          hovering_color="White")
 
 
         for button in [R_BUTTON, QUIT_BUTTON]:
@@ -184,8 +187,14 @@ def N2():
             F_BUTTON.changeColor(MOUSE_POS)
             F_BUTTON.update(SCREEN)
 
+        if res == 2:
+            T_BUTTON.changeColor(MOUSE_POS)
+            T_BUTTON.update(SCREEN)
+
         for event in pygame.event.get():
             if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
                 running = False
 
             if event.type == MOUSEBUTTONDOWN:
@@ -193,8 +202,8 @@ def N2():
                 if F_BUTTON.checkForInput(MOUSE_POS) and res ==1:
                     PLAY()
                 if QUIT_BUTTON.checkForInput(MOUSE_POS):
-                    main_menu()
-                if R_BUTTON.checkForInput(MOUSE_POS):
+                    PLAY()
+                if R_BUTTON.checkForInput(MOUSE_POS) or (T_BUTTON.checkForInput(MOUSE_POS) and res==2):
                     res = 0
                     lista_puertas.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2)
                     lista_todos_sprites.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2)
@@ -259,12 +268,14 @@ def N2():
                 if count < len(list_soluciones):
                     print(list_soluciones[count:count + 3])
                     if list_soluciones[count:count + 3] == lista_solucion:
-                        res = 1
                         print('Felicidades')
                         res = 1
                         break
                     else:
                         count += 3
+                else:
+                    res = 2
+
 
 
         lista_todos_sprites.draw(SCREEN)
@@ -349,8 +360,7 @@ def N1():
     in3 = str(nivel.input[2])
     in4 = str(nivel.input[3])
     res = 0
-    todas_puertas = [AND(), NAND(), OR(), NOR(), XOR(), XNOR(), AND(), NAND(), OR(), NOR(), XOR(), XNOR(), AND(),
-                     NAND(), OR(), NOR(), XOR(), XNOR()]
+    todas_puertas = [AND(), NAND(), OR(), NOR(), XOR(), XNOR()]
     while running:
 
         SCREEN.fill("black")
@@ -368,6 +378,9 @@ def N1():
         F_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON.png"), pos=(240, 410),
                           text_input="FELICIDADES", font=get_font(30), base_color="#d7fcd4",
                           hovering_color="White")
+        T_BUTTON = Button(image=pygame.image.load("FOTOS/BUTTON3.png"), pos=(240, 410),
+                          text_input="TRY AGAIN", font=get_font(30), base_color="#d7fcd4",
+                          hovering_color="White")
 
 
         for button in [R_BUTTON, QUIT_BUTTON]:
@@ -377,9 +390,14 @@ def N1():
         if res == 1:
             F_BUTTON.changeColor(MOUSE_POS)
             F_BUTTON.update(SCREEN)
+        if res == 2:
+            T_BUTTON.changeColor(MOUSE_POS)
+            T_BUTTON.update(SCREEN)
 
         for event in pygame.event.get():
             if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
                 running = False
 
             if event.type == MOUSEBUTTONDOWN:
@@ -387,8 +405,8 @@ def N1():
                 if F_BUTTON.checkForInput(MOUSE_POS) and res ==1:
                     PLAY()
                 if QUIT_BUTTON.checkForInput(MOUSE_POS):
-                    main_menu()
-                if R_BUTTON.checkForInput(MOUSE_POS):
+                    PLAY()
+                if R_BUTTON.checkForInput(MOUSE_POS) or (T_BUTTON.checkForInput(MOUSE_POS) and res == 2):
                     res = 0
 
                     for cuenta, ccc in enumerate(lista_puertas):
@@ -439,6 +457,8 @@ def N1():
                         break
                     else:
                         count += 3
+                else:
+                    res = 2
 
 
         lista_todos_sprites.draw(SCREEN)
