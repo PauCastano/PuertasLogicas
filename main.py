@@ -470,6 +470,8 @@ def N2():
     in3 = str(nivel.input[2])
     in4 = str(nivel.input[3])
     res = 0
+    todas_puertas = [AND(), NAND(), OR(), NOR(), XOR(), XNOR(), AND(), NAND(), OR(), NOR(), XOR(), XNOR(), AND(),
+                     NAND(), OR(), NOR(), XOR(), XNOR()]
     while running:
 
         SCREEN.fill("black")
@@ -512,41 +514,9 @@ def N2():
                     lista_puertas.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2)
                     lista_todos_sprites.remove(P_AND2, P_NAND2, P_OR2, P_NOR2, P_XOR2, P_XNOR2)
 
-                    P_AND.rect.x = AND().pos[0]
-                    P_AND.rect.y = AND().pos[1]
-
-                    P_AND2.rect.x = AND().pos[0]
-                    P_AND2.rect.y = AND().pos[1]
-
-                    P_NAND.rect.x = NAND().pos[0]
-                    P_NAND.rect.y = NAND().pos[1]
-
-                    P_NAND2.rect.x = NAND().pos[0]
-                    P_NAND2.rect.y = NAND().pos[1]
-
-                    P_OR.rect.x = OR().pos[0]
-                    P_OR.rect.y = OR().pos[1]
-
-                    P_OR2.rect.x = OR().pos[0]
-                    P_OR2.rect.y = OR().pos[1]
-
-                    P_NOR.rect.x = NOR().pos[0]
-                    P_NOR.rect.y = NOR().pos[1]
-
-                    P_NOR2.rect.x = NOR().pos[0]
-                    P_NOR2.rect.y = NOR().pos[1]
-
-                    P_XOR.rect.x = XOR().pos[0]
-                    P_XOR.rect.y = XOR().pos[1]
-
-                    P_XOR2.rect.x = XOR().pos[0]
-                    P_XOR2.rect.y = XOR().pos[1]
-
-                    P_XNOR.rect.x = XNOR().pos[0]
-                    P_XNOR.rect.y = XNOR().pos[1]
-
-                    P_XNOR2.rect.x = XNOR().pos[0]
-                    P_XNOR2.rect.y = XNOR().pos[1]
+                    for bup, bbb in enumerate(lista_puertas):
+                        bbb.rect.x = todas_puertas[bup].pos[0]
+                        bbb.rect.y = todas_puertas[bup].pos[1]
 
                     lista_solucion = [0, 0, 0]
                     print(lista_puertas)

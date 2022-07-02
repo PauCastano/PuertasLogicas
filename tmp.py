@@ -179,62 +179,6 @@ def play():
                         bbb.rect.x = todas_puertas[bup].pos[0]
                         bbb.rect.y = todas_puertas[bup].pos[1]
 
-
-                    '''
-                    P_AND.rect.x = AND().pos[0]
-                    P_AND.rect.y = AND().pos[1]
-
-                    P_AND2.rect.x = AND().pos[0]
-                    P_AND2.rect.y = AND().pos[1]
-
-                    P_AND3.rect.x = AND().pos[0]
-                    P_AND3.rect.y = AND().pos[1]
-
-                    P_NAND.rect.x = NAND().pos[0]
-                    P_NAND.rect.y = NAND().pos[1]
-
-                    P_NAND2.rect.x = NAND().pos[0]
-                    P_NAND2.rect.y = NAND().pos[1]
-
-                    P_NAND3.rect.x = NAND().pos[0]
-                    P_NAND3.rect.y = NAND().pos[1]
-
-                    P_OR.rect.x = OR().pos[0]
-                    P_OR.rect.y = OR().pos[1]
-
-                    P_OR2.rect.x = OR().pos[0]
-                    P_OR2.rect.y = OR().pos[1]
-
-                    P_OR3.rect.x = OR().pos[0]
-                    P_OR3.rect.y = OR().pos[1]
-
-                    P_NOR.rect.x = NOR().pos[0]
-                    P_NOR.rect.y = NOR().pos[1]
-
-                    P_NOR2.rect.x = NOR().pos[0]
-                    P_NOR2.rect.y = NOR().pos[1]
-
-                    P_NOR3.rect.x = NOR().pos[0]
-                    P_NOR3.rect.y = NOR().pos[1]
-
-                    P_XOR.rect.x = XOR().pos[0]
-                    P_XOR.rect.y = XOR().pos[1]
-
-                    P_XOR2.rect.x = XOR().pos[0]
-                    P_XOR2.rect.y = XOR().pos[1]
-
-                    P_XOR3.rect.x = XOR().pos[0]
-                    P_XOR3.rect.y = XOR().pos[1]
-
-                    P_XNOR.rect.x = XNOR().pos[0]
-                    P_XNOR.rect.y = XNOR().pos[1]
-
-                    P_XNOR2.rect.x = XNOR().pos[0]
-                    P_XNOR2.rect.y = XNOR().pos[1]
-
-                    P_XNOR3.rect.x = XNOR().pos[0]
-                    P_XNOR3.rect.y = XNOR().pos[1]
-                    '''
                     lista_solucion = [0, 0, 0]
                     print(lista_puertas)
 
